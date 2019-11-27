@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Source>C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\Assets\sport-muscles-climbing-climber-9606.jpg</Source>
+    <SmallTileSource>C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\Assets\sport-muscles-climbing-climber-9606.jpg</SmallTileSource>
+    <MediumTileSource>C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\Assets\sport-muscles-climbing-climber-9606.jpg</MediumTileSource>
+    <WideTileSource>C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\Assets\sport-muscles-climbing-climber-9606.jpg</WideTileSource>
+    <LargeTileSource>C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\Assets\sport-muscles-climbing-climber-9606.jpg</LargeTileSource>
+    <AppIconSource>C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\Assets\sport-muscles-climbing-climber-9606.jpg</AppIconSource>
+    <SplashScreenSource>C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\Assets\sport-muscles-climbing-climber-9606.jpg</SplashScreenSource>
+    <PackageLogoSource>C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\Assets\sport-muscles-climbing-climber-9606.jpg</PackageLogoSource>
+  </PropertyGroup>
+</Project>

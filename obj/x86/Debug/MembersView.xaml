@@ -1,0 +1,60 @@
+﻿<Page
+    x:Class="ClimbingClub.MembersView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClimbingClub"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Windows10FallCreatorsUpdate="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:ConnectionId='2' x:Name="MemberGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55"/>
+            <RowDefinition Height="293*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+            <TextBox x:ConnectionId='7' x:Name="NameBox" VerticalContentAlignment="Center" Text="Enter name" Margin="10,10,10,10"                                                          ></TextBox>
+            <TextBox x:ConnectionId='8' x:Name="SurnameBox" VerticalContentAlignment="Center" Text="Enter surname" Margin="10,10,10,10"                                                                ></TextBox>
+            <TextBox x:ConnectionId='9' x:Name="LevelBox" VerticalContentAlignment="Center" Text="Enter skill level" Margin="10,10,10,10"                                                            ></TextBox>
+            <Button x:ConnectionId='10' Content="Add member" x:Name="AddButton" Margin="10,10,10,10"                        />
+            <TextBox x:ConnectionId='11' x:Name="SearchBox" VerticalContentAlignment="Center" Text="Search by surname" Margin="40,10,10,10"                                                                                                  />
+        </StackPanel>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Margin="50,0,0,0" Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+                <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Id"/>
+                <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Name"/>
+                <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Surname"/>
+                <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Skill level"/>
+                <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Present today"/>
+            </StackPanel>
+            <ListView x:ConnectionId='3' Grid.Row="1" Grid.Column="0" x:Name="MemberList">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="40" Height="40" Source="/Assets/user-512.png"/>
+                            <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Id}"/>
+                            <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Name}"/>
+                            <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Surname}"/>
+                            <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Level}"/>
+                            <CheckBox x:ConnectionId='5' Margin="15,0,0,0" x:Name="TrainingCheckBox" Width="150" VerticalAlignment="Center" IsChecked="{Binding trainedToday}"                       />
+                            <Button x:ConnectionId='6' x:Name="DetailsButton" Content="Details"                            />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Grid>
+</Page>
+
