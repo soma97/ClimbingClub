@@ -9,6 +9,46 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="11*"/>
+            <RowDefinition Height="117*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="White" BorderThickness="1">
+            <TextBox x:Name="SearchBox" VerticalAlignment="Center" Text="Search by loaner surname" Margin="40,0,0,0" TextChanged="SearchBox_TextChanged" LostFocus="SearchBox_LostFocus" GotFocus="SearchBox_GotFocus"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Grid.Row="1" Grid.ColumnSpan="3">
+            <TextBlock Margin="15,0,0,0" Width="30" VerticalAlignment="Center" Text="Id"/>
+            <TextBlock Margin="15,0,0,0" Width="130" VerticalAlignment="Center" Text="Name"/>
+            <TextBlock Margin="15,0,0,0" Width="30" VerticalAlignment="Center" Text="Price"/>
+            <TextBlock Margin="15,0,0,0" Width="80" VerticalAlignment="Center" Text="Loan date"/>
+            <TextBlock Margin="15,0,0,0" Width="130" VerticalAlignment="Center" Text="Expected return date"/>
+            <TextBlock Margin="15,0,0,0" Width="110" VerticalAlignment="Center" Text="Return date"/>
+            <TextBlock Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="Loaner name"/>
+            <TextBlock Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="Loaner surname"/>
+        </StackPanel>
+        <ListView Grid.Row="2" Grid.ColumnSpan="3" x:Name="LoaningList">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="15,0,0,0" Width="30" VerticalAlignment="Center" Text="{Binding Id}"/>
+                        <TextBlock Margin="15,0,0,0" Width="130" VerticalAlignment="Center" Text="{Binding Name}"/>
+                        <TextBlock Margin="15,0,0,0" Width="30" VerticalAlignment="Center" Text="{Binding Price}"/>
+                        <TextBlock Margin="15,0,0,0" Width="80" VerticalAlignment="Center" Text="{Binding loanDateGet}"/>
+                        <TextBlock Margin="15,0,0,0" Width="130" VerticalAlignment="Center" Text="{Binding expectedReturnDateGet}"/>
+                        <TextBlock Margin="15,0,0,0" Width="110" VerticalAlignment="Center" Text="{Binding returnDateGet}"/>
+                        <TextBlock Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding Member.Name}"/>
+                        <TextBlock Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding Member.Surname}"/>
+                        <Button x:Name="DescriptionButton" Margin="20,0,0,0" Content="Description" Click="DescriptionButton_Click"/>
+                        <Button x:Name="ReturnButton" Margin="15,0,0,0" Content="Return Loaning Items" Click="ReturnButton_Click"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

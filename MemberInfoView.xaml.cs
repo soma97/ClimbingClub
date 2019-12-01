@@ -73,7 +73,7 @@ namespace ClimbingClub
                 var paymentDaysList = payments.Where(fee => fee.IsMonthly==false);
                 foreach (Training x in trainings)
                 {
-                    if(!(paymentMonthList.Where(pm=>pm.Payment.Month==x.TrainingDate.Month).Any() ||
+                    if(!(paymentMonthList.Where(pm=>pm.Payment.Month==x.TrainingDate.Month && pm.Payment.Year==x.TrainingDate.Year).Any() ||
                         paymentDaysList.Where(pm => pm.Payment.Date.Equals(x.TrainingDate.Date)).Any()))
                     {
                         debts.Add(x);
@@ -84,7 +84,7 @@ namespace ClimbingClub
             int[] unpaidTrainingsPerMonth = new int[12];
             foreach(var x in debts)
             {
-                unpaidTrainingsPerMonth[x.TrainingDate.Month]++;
+                unpaidTrainingsPerMonth[x.TrainingDate.Month-1]++;
             }
             int sum = 0;
             for(int i=0;i<12;++i)
@@ -204,5 +204,121 @@ namespace ClimbingClub
             RefreshDebt();
         }
 
+        private async void LoaningButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            StackPanel content = new StackPanel() { Orientation = Orientation.Vertical };
+            TextBlock nameBlock = new TextBlock() { Text = "Enter name",
+                Margin = new Thickness(0, 10, 0, 0)
+            };
+            TextBox nameBox = new TextBox() { Margin = new Thickness(0, 10, 0, 0) };
+            TextBlock priceBlock = new TextBlock() { Text = "Enter price",
+                Margin = new Thickness(0, 10, 0, 0)
+            };
+            TextBox priceBox = new TextBox() { Margin = new Thickness(0, 10, 0, 0) };
+            TextBlock descrBlock = new TextBlock() { Text = "Enter description",
+                Margin = new Thickness(0, 10, 0, 0)
+            };
+            TextBox descrBox = new TextBox() { Margin = new Thickness(0, 10, 0, 0) };
+            TextBlock expectedRetDate = new TextBlock() { Text = "Expected return date",
+                Margin=new Thickness(0,10,0,0)
+            };
+            DatePicker datePicker = new DatePicker()
+            {
+                Margin = new Thickness(0, 10, 0, 0),
+                Date = DateTime.Now
+            };
+            TextBlock selectItemsBlock = new TextBlock()
+            {
+                Text = "Select items for loaning",
+                Margin = new Thickness(0, 10, 0, 0)
+            };
+            ListView listGearItems = new ListView()
+            {
+                Margin = new Thickness(0, 10, 0, 0),
+                Height=200
+            };
+            using (var db = new ApplicationDbContext())
+            {
+                foreach(var item in db.GearItems.Include(g=>g.Loaning))
+                {
+                    if (item.Loaning == null)
+                    {
+                        listGearItems.Items.Add(new CheckBox() { Content = item.Id + ", " + item.Name + ", " + item.Description });
+                    }
+                }
+            }
+            content.Children.Add(nameBlock);
+            content.Children.Add(nameBox);
+            content.Children.Add(priceBlock);
+            content.Children.Add(priceBox);
+            content.Children.Add(descrBlock);
+            content.Children.Add(descrBox);
+            content.Children.Add(expectedRetDate);
+            content.Children.Add(datePicker);
+            content.Children.Add(selectItemsBlock);
+            content.Children.Add(listGearItems);
+            double priceVar = 0.0;
+            
+            ContentDialog loaningDialog = new ContentDialog()
+            {
+                Title = "Add loaning",
+                Content = content,
+                PrimaryButtonText = "Confirm",
+                SecondaryButtonText = "Cancel",
+                IsSecondaryButtonEnabled = true
+            };
+            if (await loaningDialog.ShowAsync() == ContentDialogResult.Primary)
+            {
+                try
+                {
+                    priceVar = Double.Parse(priceBox.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageDialog messageDialog = new MessageDialog("You entered an invalid price. Please try again.", "Error");
+                    messageDialog.ShowAsync();
+                    return;
+                }
+                Loaning loan = new Loaning()
+                {
+                    Name = nameBox.Text,
+                    Price = priceVar,
+                    Description = descrBox.Text,
+                    LoanDate = DateTime.Now.Date,
+                    ExpectedReturnDate = datePicker.Date.Date,
+                    ReturnDate = DateTime.MinValue,
+                };
+                AddLoaning(loan, listGearItems);
+            }
+        }
+
+        private void AddLoaning(Loaning loan,ListView listView)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                using (var trx = db.Database.BeginTransaction())
+                {
+                    Member membersLoan = db.Members.Where(m => m.Id == ID).FirstOrDefault();
+                    loan.Member = membersLoan;
+                    int count = 0;
+                    foreach(var x in listView.Items)
+                    {
+                        if ((bool)((CheckBox)x).IsChecked)
+                        {
+                            int id = Int32.Parse(((CheckBox)x).Content.ToString().Split(',')[0]);
+                            GearItem item = db.GearItems.Include(g => g.Loaning).Where(g => g.Id == id).FirstOrDefault();
+                            item.Loaning = loan;
+                            db.Update(item);
+                            count++;
+                        }
+                    }
+                    loan.Count = count;
+                    db.Loanings.Add(loan);
+                    db.SaveChanges();
+                    trx.Commit();
+                }
+            }
+        }
     }
 }

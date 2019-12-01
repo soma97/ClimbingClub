@@ -37,10 +37,6 @@
       "frameworks": {
         "uap10.0.15063": {
           "dependencies": {
-            "Extended.Wpf.Toolkit": {
-              "target": "Package",
-              "version": "[3.7.0, )"
-            },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[1.0.0, )"

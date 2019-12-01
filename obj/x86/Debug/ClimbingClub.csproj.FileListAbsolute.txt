@@ -275,3 +275,8 @@ C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\De
 C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\Debug\MemberInfoView.g.cs
 C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\Debug\MemberInfoView.xaml
 C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\Debug\MemberInfoView.xbf
+C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\GearView.xbf
+C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\Debug\GearView.g.i.cs
+C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\Debug\GearView.g.cs
+C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\Debug\GearView.xaml
+C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\Debug\GearView.xbf

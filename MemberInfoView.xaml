@@ -58,6 +58,7 @@
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1">
             <Button x:Name="PaymentButton" HorizontalAlignment="Center" Margin="0,50,0,0" Content="Add payment" Click="PaymentButton_Click"/>
+            <Button x:Name="LoaningButton" HorizontalAlignment="Center" Margin="0,50,0,0" Content="Add loaning" Click="LoaningButton_Click"/>
         </StackPanel>
     </Grid>
 </Page>

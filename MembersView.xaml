@@ -11,13 +11,13 @@
 
     <Grid x:Name="MemberGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="55"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="293*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" BorderBrush="White" BorderThickness="1">
             <TextBox x:Name="NameBox" VerticalContentAlignment="Center" Text="Enter name" Margin="10,10,10,10" LostFocus="NameBox_LostFocus" GotFocus="NameBox_GotFocus"></TextBox>
             <TextBox x:Name="SurnameBox" VerticalContentAlignment="Center" Text="Enter surname" Margin="10,10,10,10" GotFocus="SurnameBox_GotFocus" LostFocus="SurnameBox_LostFocus"></TextBox>
             <TextBox x:Name="LevelBox" VerticalContentAlignment="Center" Text="Enter skill level" Margin="10,10,10,10" GotFocus="LevelBox_GotFocus" LostFocus="LevelBox_LostFocus"></TextBox>

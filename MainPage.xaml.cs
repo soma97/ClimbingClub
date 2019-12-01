@@ -142,9 +142,13 @@ namespace ClimbingClub
             {
                 ActiveFrame.Navigate(typeof(MembersView));
             }
-            else
+            else if(PivotTab.SelectedIndex==2)
             {
                 ActiveFrame.Navigate(typeof(LoaningsView));
+            }
+            else
+            {
+                ActiveFrame.Navigate(typeof(GearView));
             }
         }
 

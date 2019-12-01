@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="ClimbingClub.GearView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClimbingClub"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="573*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Orientation="Horizontal" BorderBrush="White" BorderThickness="1">
+            <TextBox Margin="10,10,10,10" Text="Enter name" x:Name="NameBox" VerticalAlignment="Center" LostFocus="NameBox_LostFocus" GotFocus="NameBox_GotFocus"/>
+            <TextBox Margin="10,10,10,10" Text="Enter description" x:Name="DescrBox" VerticalAlignment="Center" GotFocus="DescrBox_GotFocus" LostFocus="DescrBox_LostFocus"/>
+            <Button x:Name="AddGearButton" Content="Add gear item" Margin="30,10,10,10" Click="AddGearButton_Click"/>
+            <TextBox x:Name="SearchBox" Text="Search by name" Margin="100,0,0,0" VerticalAlignment="Center" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus" TextChanged="SearchBox_TextChanged"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Grid.Row="1" Grid.ColumnSpan="3">
+            <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Id"/>
+            <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Name"/>
+            <TextBlock Margin="15,0,0,0" Width="350" VerticalAlignment="Center" Text="Description"/>
+            <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Loan status"/>
+        </StackPanel>
+        <ListView Grid.Row="3" Grid.ColumnSpan="3" x:Name="GearList">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Id}"/>
+                        <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Name}"/>
+                        <TextBlock Margin="15,0,0,0" Width="350" VerticalAlignment="Center" Text="{Binding Description}"/>
+                        <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Loan}"/>
+                        <Button Margin="15,0,0,0" VerticalAlignment="Center" x:Name="DeleteButton" Content="Delete" Click="DeleteButton_Click"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

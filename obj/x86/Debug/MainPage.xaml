@@ -14,14 +14,15 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="338*"/>
+            <ColumnDefinition Width="420*"/>
             <ColumnDefinition Width="345*"/>
             <ColumnDefinition Width="341*"/>
         </Grid.ColumnDefinitions>
         <Pivot x:ConnectionId='2' x:Name="PivotTab" Grid.Row="0" Grid.Column="0"                                              >
-            <PivotItem Header="Home"/>
-            <PivotItem Header="Members"/>
-            <PivotItem Header="Loanings"/>
+            <PivotItem Header="Home" TabIndex="0"/>
+            <PivotItem Header="Members" TabIndex="1"/>
+            <PivotItem Header="Loanings" TabIndex="2"/>
+            <PivotItem Header="Gear" TabIndex="3"/>
         </Pivot>
         <StackPanel Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Margin="0,0,0,0" Orientation="Horizontal">
             <Button VerticalAlignment="Top" HorizontalAlignment="Right" Height="50" Width="50">
