@@ -121,7 +121,7 @@ namespace ClimbingClub
 
         private void SearchBySurname(string surname)
         {
-            LoaningList.ItemsSource = allLoaningsLoaded.Where(l => l.Member.Surname.StartsWith(surname));
+            LoaningList.ItemsSource = allLoaningsLoaded.Where(l => l.Member.Surname.ToLower().StartsWith(surname.ToLower()));
         }
 
         private void SearchBox_LostFocus(object sender, RoutedEventArgs e)

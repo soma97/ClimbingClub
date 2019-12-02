@@ -270,7 +270,6 @@ C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\De
 C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\Debug\ProjectArchitectures.txt
 C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_636758480200000000.json
 C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\MemberInfoView.xbf
-C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\Debug\ClimbingClub.csprojAssemblyReference.cache
 C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\Debug\MemberInfoView.g.i.cs
 C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\Debug\MemberInfoView.g.cs
 C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\Debug\MemberInfoView.xaml

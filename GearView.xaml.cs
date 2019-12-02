@@ -36,7 +36,7 @@ namespace ClimbingClub
             using (var db = new ApplicationDbContext())
             {
                 GearList.ItemsSource = db.GearItems.Include(g=>g.Loaning);
-                allLoadedItems = db.GearItems.Include(g=>g.Loaning).ToList();
+                allLoadedItems = db.GearItems.Include(g => g.Loaning).Include(m => m.Loaning.Member).ToList();
             }
         }
         private void AddGearButton_Click(object sender, RoutedEventArgs e)
@@ -96,7 +96,7 @@ namespace ClimbingClub
 
         private void SearchByName(string name)
         {
-            GearList.ItemsSource = allLoadedItems.Where(g => g.Name.StartsWith(name));
+            GearList.ItemsSource = allLoadedItems.Where(g => g.Name.ToLower().StartsWith(name.ToLower()));
         }
 
         private void SearchBox_LostFocus(object sender, RoutedEventArgs e)

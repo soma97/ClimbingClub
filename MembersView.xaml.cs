@@ -227,7 +227,7 @@ namespace ClimbingClub
 
         private void SearchBySurname(string surname)
         {
-             MemberList.ItemsSource=allMembersLoaded.Where(m => m.Surname.StartsWith(surname));
+             MemberList.ItemsSource=allMembersLoaded.Where(m => m.Surname.ToLower().StartsWith(surname.ToLower()));
         }
     }
 }

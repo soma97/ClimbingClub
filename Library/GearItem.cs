@@ -23,7 +23,7 @@ namespace ClimbingClub.Library
                 }
                 else
                 {
-                    return Loaning.Name;
+                    return Loaning.Member.Name+" "+Loaning.Member.Surname;
                 }
             } }
     }

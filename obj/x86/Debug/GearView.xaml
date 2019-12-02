@@ -29,7 +29,7 @@
             <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Id"/>
             <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Name"/>
             <TextBlock Margin="15,0,0,0" Width="350" VerticalAlignment="Center" Text="Description"/>
-            <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Loan status"/>
+            <TextBlock Margin="15,0,0,0" Width="200" VerticalAlignment="Center" Text="Loan status"/>
         </StackPanel>
         <ListView x:ConnectionId='2' Grid.Row="3" Grid.ColumnSpan="3" x:Name="GearList">
             <ListView.ItemTemplate>
@@ -38,7 +38,7 @@
                         <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Id}"/>
                         <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Name}"/>
                         <TextBlock Margin="15,0,0,0" Width="350" VerticalAlignment="Center" Text="{Binding Description}"/>
-                        <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Loan}"/>
+                        <TextBlock Margin="15,0,0,0" Width="200" VerticalAlignment="Center" Text="{Binding Loan}"/>
                         <Button x:ConnectionId='4' Margin="15,0,0,0" VerticalAlignment="Center" x:Name="DeleteButton" Content="Delete"                           />
                     </StackPanel>
                 </DataTemplate>
