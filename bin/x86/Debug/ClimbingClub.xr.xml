@@ -10,11 +10,11 @@
     <RootPropertyPathName Name="returnDateGet" />
     <RootPropertyPathName Name="expectedReturnDateGet" />
     <RootPropertyPathName Name="loanDateGet" />
-    <RootPropertyPathName Name="Price" />
+    <RootPropertyPathName Name="Count" />
     <RootPropertyPathName Name="timeFormat" />
     <RootPropertyPathName Name="isMonthlyFormat" />
+    <RootPropertyPathName Name="Price" />
     <RootPropertyPathName Name="trainedToday" />
-    <RootPropertyPathName Name="Level" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application" />
@@ -81,12 +81,12 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.Binding" />
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
-      <RootProperty Name="Margin" />
       <RootProperty Name="Text" />
+      <RootProperty Name="Margin" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="VerticalContentAlignment" />
-      <RootEvent Name="LostFocus" />
       <RootEvent Name="GotFocus" />
+      <RootEvent Name="LostFocus" />
       <RootEvent Name="TextChanged" />
     </RootType>
     <RootType FullName="ClimbingClub.GearView" />

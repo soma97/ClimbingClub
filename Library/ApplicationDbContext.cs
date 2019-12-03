@@ -15,11 +15,20 @@ namespace ClimbingClub.Library
         public DbSet<Loaning> Loanings { get; set; }
         public DbSet<MembershipFee> MembershipFees { get; set; }
         public DbSet<GearItem> GearItems { get; set; }
+        public DbSet<GearItemLoaning> GearLoanings { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=ClimbingClubData.db");
             base.OnConfiguring(optionsBuilder);
+        }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<GearItemLoaning>().HasKey(table => new {
+                table.IdLoaning,
+                table.IdGearItem
+            });
         }
     }
 

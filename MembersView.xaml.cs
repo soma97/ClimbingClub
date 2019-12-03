@@ -37,8 +37,8 @@ namespace ClimbingClub
         {
             using (var db = new ApplicationDbContext())
             {
-                MemberList.ItemsSource = db.Members.ToList();
-                allMembersLoaded = db.Members.ToList();
+                MemberList.ItemsSource = db.Members.Where(m=>m.isActive==true).ToList();
+                allMembersLoaded = db.Members.Where(m => m.isActive == true).ToList();
             }
         }
 
@@ -74,25 +74,15 @@ namespace ClimbingClub
             }
         }
 
-        private void LevelBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (LevelBox.Text.Equals("Enter skill level"))
-            {
-                LevelBox.Text = "";
-            }
-        }
-
-        private void LevelBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (LevelBox.Text.Length < 1)
-            {
-                LevelBox.Text = "Enter skill level";
-            }
-        }
-
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            using(var db=new ApplicationDbContext())
+            if (NameBox.Text.Length < 1 || SurnameBox.Text.Length < 1 || NameBox.Text.Equals("Enter name") || SurnameBox.Text.Equals("Enter surname"))
+            {
+                MessageDialog messageDialog = new MessageDialog("Please set all fields and try again.", "Error");
+                messageDialog.ShowAsync();
+                return;
+            }
+            using (var db=new ApplicationDbContext())
             {
                 using(var trx=db.Database.BeginTransaction())
                 {
@@ -102,7 +92,7 @@ namespace ClimbingClub
                         {
                             Name = NameBox.Text,
                             Surname = SurnameBox.Text,
-                            Level = Int32.Parse(LevelBox.Text)
+                            isActive=true
                         };
                         db.Members.Add(newMember);
                         db.SaveChanges();
@@ -118,7 +108,6 @@ namespace ClimbingClub
             }
             NameBox.Text = "Enter name";
             SurnameBox.Text = "Enter surname";
-            LevelBox.Text = "Enter skill level";
             RefreshMembersList();
         }
 

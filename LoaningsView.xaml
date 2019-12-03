@@ -20,12 +20,12 @@
             <RowDefinition Height="117*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="White" BorderThickness="1">
-            <TextBox x:Name="SearchBox" VerticalAlignment="Center" Text="Search by loaner surname" Margin="40,0,0,0" TextChanged="SearchBox_TextChanged" LostFocus="SearchBox_LostFocus" GotFocus="SearchBox_GotFocus"/>
+            <TextBox x:Name="SearchBox" VerticalAlignment="Center" Text="Search by loaner surname" Margin="10,0,0,0" TextChanged="SearchBox_TextChanged" LostFocus="SearchBox_LostFocus" GotFocus="SearchBox_GotFocus"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Grid.Row="1" Grid.ColumnSpan="3">
             <TextBlock Margin="15,0,0,0" Width="30" VerticalAlignment="Center" Text="Id"/>
             <TextBlock Margin="15,0,0,0" Width="130" VerticalAlignment="Center" Text="Name"/>
-            <TextBlock Margin="15,0,0,0" Width="30" VerticalAlignment="Center" Text="Price"/>
+            <TextBlock Margin="15,0,0,0" Width="45" VerticalAlignment="Center" Text="Count"/>
             <TextBlock Margin="15,0,0,0" Width="80" VerticalAlignment="Center" Text="Loan date"/>
             <TextBlock Margin="15,0,0,0" Width="130" VerticalAlignment="Center" Text="Expected return date"/>
             <TextBlock Margin="15,0,0,0" Width="110" VerticalAlignment="Center" Text="Return date"/>
@@ -38,7 +38,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Margin="15,0,0,0" Width="30" VerticalAlignment="Center" Text="{Binding Id}"/>
                         <TextBlock Margin="15,0,0,0" Width="130" VerticalAlignment="Center" Text="{Binding Name}"/>
-                        <TextBlock Margin="15,0,0,0" Width="30" VerticalAlignment="Center" Text="{Binding Price}"/>
+                        <TextBlock Margin="15,0,0,0" Width="45" VerticalAlignment="Center" Text="{Binding Count}"/>
                         <TextBlock Margin="15,0,0,0" Width="80" VerticalAlignment="Center" Text="{Binding loanDateGet}"/>
                         <TextBlock Margin="15,0,0,0" Width="130" VerticalAlignment="Center" Text="{Binding expectedReturnDateGet}"/>
                         <TextBlock Margin="15,0,0,0" Width="110" VerticalAlignment="Center" Text="{Binding returnDateGet}"/>

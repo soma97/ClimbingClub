@@ -8,7 +8,7 @@ using ClimbingClub.Library;
 namespace ClimbingClub.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191127193729_Initial")]
+    [Migration("20191203140301_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,15 +23,32 @@ namespace ClimbingClub.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<int?>("LoaningId");
-
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
 
+                    b.ToTable("GearItems");
+                });
+
+            modelBuilder.Entity("ClimbingClub.Library.GearItemLoaning", b =>
+                {
+                    b.Property<int>("IdLoaning");
+
+                    b.Property<int>("IdGearItem");
+
+                    b.Property<int?>("GearItemId");
+
+                    b.Property<int?>("LoaningId");
+
+                    b.Property<bool>("isActiveNow");
+
+                    b.HasKey("IdLoaning", "IdGearItem");
+
+                    b.HasIndex("GearItemId");
+
                     b.HasIndex("LoaningId");
 
-                    b.ToTable("GearItems");
+                    b.ToTable("GearLoanings");
                 });
 
             modelBuilder.Entity("ClimbingClub.Library.Loaning", b =>
@@ -51,13 +68,15 @@ namespace ClimbingClub.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<double>("Price");
-
                     b.Property<DateTime>("ReturnDate");
+
+                    b.Property<string>("Username");
 
                     b.HasKey("Id");
 
                     b.HasIndex("MemberId");
+
+                    b.HasIndex("Username");
 
                     b.ToTable("Loanings");
                 });
@@ -66,8 +85,6 @@ namespace ClimbingClub.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int>("Level");
 
                     b.Property<string>("Name");
 
@@ -111,8 +128,23 @@ namespace ClimbingClub.Migrations
                     b.ToTable("Trainings");
                 });
 
-            modelBuilder.Entity("ClimbingClub.Library.GearItem", b =>
+            modelBuilder.Entity("ClimbingClub.Library.User", b =>
                 {
+                    b.Property<string>("Username");
+
+                    b.Property<string>("Password");
+
+                    b.HasKey("Username");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("ClimbingClub.Library.GearItemLoaning", b =>
+                {
+                    b.HasOne("ClimbingClub.Library.GearItem", "GearItem")
+                        .WithMany()
+                        .HasForeignKey("GearItemId");
+
                     b.HasOne("ClimbingClub.Library.Loaning", "Loaning")
                         .WithMany()
                         .HasForeignKey("LoaningId");
@@ -123,6 +155,10 @@ namespace ClimbingClub.Migrations
                     b.HasOne("ClimbingClub.Library.Member", "Member")
                         .WithMany()
                         .HasForeignKey("MemberId");
+
+                    b.HasOne("ClimbingClub.Library.User", "user")
+                        .WithMany()
+                        .HasForeignKey("Username");
                 });
 
             modelBuilder.Entity("ClimbingClub.Library.MembershipFee", b =>

@@ -20,10 +20,10 @@
             <RowDefinition Height="573*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Orientation="Horizontal" BorderBrush="White" BorderThickness="1">
-            <TextBox Margin="10,10,10,10" Text="Enter name" x:Name="NameBox" VerticalAlignment="Center" LostFocus="NameBox_LostFocus" GotFocus="NameBox_GotFocus"/>
+            <TextBox x:Name="SearchBox" Text="Search by name" Margin="10,0,0,0" VerticalAlignment="Center" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus" TextChanged="SearchBox_TextChanged"/>
+            <TextBox Margin="400,10,10,10" Text="Enter name" x:Name="NameBox" VerticalAlignment="Center" LostFocus="NameBox_LostFocus" GotFocus="NameBox_GotFocus"/>
             <TextBox Margin="10,10,10,10" Text="Enter description" x:Name="DescrBox" VerticalAlignment="Center" GotFocus="DescrBox_GotFocus" LostFocus="DescrBox_LostFocus"/>
             <Button x:Name="AddGearButton" Content="Add gear item" Margin="30,10,10,10" Click="AddGearButton_Click"/>
-            <TextBox x:Name="SearchBox" Text="Search by name" Margin="100,0,0,0" VerticalAlignment="Center" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus" TextChanged="SearchBox_TextChanged"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Grid.Row="1" Grid.ColumnSpan="3">
             <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Id"/>

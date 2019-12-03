@@ -127,10 +127,12 @@
     </Compile>
     <Compile Include="Library\ApplicationDbContext.cs" />
     <Compile Include="Library\GearItem.cs" />
+    <Compile Include="Library\GearItemLoaning.cs" />
     <Compile Include="Library\Loaning.cs" />
     <Compile Include="Library\Member.cs" />
     <Compile Include="Library\MembershipFee.cs" />
     <Compile Include="Library\Training.cs" />
+    <Compile Include="Library\User.cs" />
     <Compile Include="LoaningsView.xaml.cs">
       <DependentUpon>LoaningsView.xaml</DependentUpon>
     </Compile>
@@ -143,9 +145,13 @@
     <Compile Include="MembersView.xaml.cs">
       <DependentUpon>MembersView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20191127193729_Initial.cs" />
-    <Compile Include="Migrations\20191127193729_Initial.designer.cs">
-      <DependentUpon>20191127193729_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\20191203140301_Initial.cs" />
+    <Compile Include="Migrations\20191203140301_Initial.designer.cs">
+      <DependentUpon>20191203140301_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191203152043_Final.cs" />
+    <Compile Include="Migrations\20191203152043_Final.designer.cs">
+      <DependentUpon>20191203152043_Final.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

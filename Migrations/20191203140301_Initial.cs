@@ -9,12 +9,25 @@ namespace ClimbingClub.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "GearItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Autoincrement", true),
+                    Description = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GearItems", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Members",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Autoincrement", true),
-                    Level = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Surname = table.Column<string>(nullable: true)
                 },
@@ -24,29 +37,15 @@ namespace ClimbingClub.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Loanings",
+                name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Autoincrement", true),
-                    Count = table.Column<int>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    ExpectedReturnDate = table.Column<DateTime>(nullable: false),
-                    LoanDate = table.Column<DateTime>(nullable: false),
-                    MemberId = table.Column<int>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    Price = table.Column<double>(nullable: false),
-                    ReturnDate = table.Column<DateTime>(nullable: false)
+                    Username = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Loanings", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Loanings_Members_MemberId",
-                        column: x => x.MemberId,
-                        principalTable: "Members",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                    table.PrimaryKey("PK_Users", x => x.Username);
                 });
 
             migrationBuilder.CreateTable(
@@ -90,35 +89,83 @@ namespace ClimbingClub.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "GearItems",
+                name: "Loanings",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Autoincrement", true),
+                    Count = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
-                    LoaningId = table.Column<int>(nullable: true),
-                    Name = table.Column<string>(nullable: true)
+                    ExpectedReturnDate = table.Column<DateTime>(nullable: false),
+                    LoanDate = table.Column<DateTime>(nullable: false),
+                    MemberId = table.Column<int>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    ReturnDate = table.Column<DateTime>(nullable: false),
+                    Username = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GearItems", x => x.Id);
+                    table.PrimaryKey("PK_Loanings", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_GearItems_Loanings_LoaningId",
+                        name: "FK_Loanings_Members_MemberId",
+                        column: x => x.MemberId,
+                        principalTable: "Members",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Loanings_Users_Username",
+                        column: x => x.Username,
+                        principalTable: "Users",
+                        principalColumn: "Username",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "GearLoanings",
+                columns: table => new
+                {
+                    IdLoaning = table.Column<int>(nullable: false),
+                    IdGearItem = table.Column<int>(nullable: false),
+                    GearItemId = table.Column<int>(nullable: true),
+                    LoaningId = table.Column<int>(nullable: true),
+                    isActiveNow = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GearLoanings", x => new { x.IdLoaning, x.IdGearItem });
+                    table.ForeignKey(
+                        name: "FK_GearLoanings_GearItems_GearItemId",
+                        column: x => x.GearItemId,
+                        principalTable: "GearItems",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_GearLoanings_Loanings_LoaningId",
                         column: x => x.LoaningId,
                         principalTable: "Loanings",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.SetNull);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_GearItems_LoaningId",
-                table: "GearItems",
+                name: "IX_GearLoanings_GearItemId",
+                table: "GearLoanings",
+                column: "GearItemId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_GearLoanings_LoaningId",
+                table: "GearLoanings",
                 column: "LoaningId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Loanings_MemberId",
                 table: "Loanings",
                 column: "MemberId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Loanings_Username",
+                table: "Loanings",
+                column: "Username");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MembershipFees_MemberId",
@@ -134,7 +181,7 @@ namespace ClimbingClub.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "GearItems");
+                name: "GearLoanings");
 
             migrationBuilder.DropTable(
                 name: "MembershipFees");
@@ -143,10 +190,16 @@ namespace ClimbingClub.Migrations
                 name: "Trainings");
 
             migrationBuilder.DropTable(
+                name: "GearItems");
+
+            migrationBuilder.DropTable(
                 name: "Loanings");
 
             migrationBuilder.DropTable(
                 name: "Members");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

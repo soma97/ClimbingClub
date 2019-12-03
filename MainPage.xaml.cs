@@ -122,9 +122,8 @@ namespace ClimbingClub
                 }
                 foreach(Member x in db.Members)
                 {
-                    System.Diagnostics.Debug.WriteLine(x.Id+" "+x.Name+" "+x.Surname+" "+x.Level);
+                    System.Diagnostics.Debug.WriteLine(x.Id+" "+x.Name+" "+x.Surname+" ");
                 }
-
             }
 
             

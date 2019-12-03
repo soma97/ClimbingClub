@@ -12,12 +12,12 @@ namespace ClimbingClub.Library
         public int Id { get; set; }
         public string Name { get; set; }
         public int Count { get; set; }
-        public double Price { get; set; }
         public string Description { get; set; }
         public DateTime LoanDate { get; set; }
         public DateTime ExpectedReturnDate { get; set; }
         public DateTime ReturnDate { get; set; }
         public virtual Member Member { get; set; }
+        public virtual User user { get; set; }
 
         [NotMapped]
         public string returnDateGet { get

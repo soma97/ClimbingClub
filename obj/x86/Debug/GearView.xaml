@@ -20,10 +20,10 @@
             <RowDefinition Height="573*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Orientation="Horizontal" BorderBrush="White" BorderThickness="1">
-            <TextBox x:ConnectionId='5' Margin="10,10,10,10" Text="Enter name" x:Name="NameBox" VerticalAlignment="Center"                                                          />
-            <TextBox x:ConnectionId='6' Margin="10,10,10,10" Text="Enter description" x:Name="DescrBox" VerticalAlignment="Center"                                                            />
-            <Button x:ConnectionId='7' x:Name="AddGearButton" Content="Add gear item" Margin="30,10,10,10"                            />
-            <TextBox x:ConnectionId='8' x:Name="SearchBox" Text="Search by name" Margin="100,0,0,0" VerticalAlignment="Center"                                                                                                  />
+            <TextBox x:ConnectionId='5' x:Name="SearchBox" Text="Search by name" Margin="10,0,0,0" VerticalAlignment="Center"                                                                                                  />
+            <TextBox x:ConnectionId='6' Margin="400,10,10,10" Text="Enter name" x:Name="NameBox" VerticalAlignment="Center"                                                          />
+            <TextBox x:ConnectionId='7' Margin="10,10,10,10" Text="Enter description" x:Name="DescrBox" VerticalAlignment="Center"                                                            />
+            <Button x:ConnectionId='8' x:Name="AddGearButton" Content="Add gear item" Margin="30,10,10,10"                            />
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Grid.Row="1" Grid.ColumnSpan="3">
             <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Id"/>

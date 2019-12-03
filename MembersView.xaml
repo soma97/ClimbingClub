@@ -18,11 +18,10 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" BorderBrush="White" BorderThickness="1">
-            <TextBox x:Name="NameBox" VerticalContentAlignment="Center" Text="Enter name" Margin="10,10,10,10" LostFocus="NameBox_LostFocus" GotFocus="NameBox_GotFocus"></TextBox>
+            <TextBox x:Name="SearchBox" VerticalContentAlignment="Center" Text="Search by surname" Margin="10,10,10,10" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus" TextChanged="SearchBox_TextChanged"/>
+            <TextBox x:Name="NameBox" VerticalContentAlignment="Center" Text="Enter name" Margin="350,10,10,10" LostFocus="NameBox_LostFocus" GotFocus="NameBox_GotFocus"></TextBox>
             <TextBox x:Name="SurnameBox" VerticalContentAlignment="Center" Text="Enter surname" Margin="10,10,10,10" GotFocus="SurnameBox_GotFocus" LostFocus="SurnameBox_LostFocus"></TextBox>
-            <TextBox x:Name="LevelBox" VerticalContentAlignment="Center" Text="Enter skill level" Margin="10,10,10,10" GotFocus="LevelBox_GotFocus" LostFocus="LevelBox_LostFocus"></TextBox>
             <Button Content="Add member" x:Name="AddButton" Margin="10,10,10,10" Click="AddButton_Click"/>
-            <TextBox x:Name="SearchBox" VerticalContentAlignment="Center" Text="Search by surname" Margin="40,10,10,10" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus" TextChanged="SearchBox_TextChanged"/>
         </StackPanel>
         <Grid Grid.Row="1" Grid.Column="0">
             <Grid.RowDefinitions>
@@ -36,7 +35,6 @@
                 <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Id"/>
                 <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Name"/>
                 <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Surname"/>
-                <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Skill level"/>
                 <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Present today"/>
             </StackPanel>
             <ListView Grid.Row="1" Grid.Column="0" x:Name="MemberList">
@@ -47,7 +45,6 @@
                             <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Id}"/>
                             <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Name}"/>
                             <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Surname}"/>
-                            <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Level}"/>
                             <CheckBox Margin="15,0,0,0" x:Name="TrainingCheckBox" Width="150" VerticalAlignment="Center" IsChecked="{Binding trainedToday}" Click="CheckBox_Click"/>
                             <Button x:Name="DetailsButton" Content="Details" Click="DetailsButton_Click"/>
                         </StackPanel>

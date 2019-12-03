@@ -51,9 +51,10 @@ namespace ClimbingClub
             using (var db = new ApplicationDbContext())
             {
                 description = db.Loanings.Where(l => l.Id == id).Select(l => l.Description).FirstOrDefault();
-                foreach (var x in db.GearItems.Include(g => g.Loaning).Where(l => l.Loaning.Id == id))
+                foreach (var x in db.GearLoanings.Where(gl=>gl.IdLoaning==id))
                 {
-                    listItems.Items.Add(x.Id + ", "+x.Name + ", " + x.Description);
+                    GearItem item = db.GearItems.Where(gi => gi.Id == x.IdGearItem).FirstOrDefault();
+                    listItems.Items.Add(item.Id + ", "+item.Name + ", " + item.Description);
                 }
             }
             StackPanel content = new StackPanel() { Orientation = Orientation.Vertical };
@@ -90,9 +91,9 @@ namespace ClimbingClub
                     Loaning loan = db.Loanings.Where(l => l.Id == id).FirstOrDefault();
                     loan.ReturnDate = DateTime.Now;
                     db.Entry(loan).Property("ReturnDate").IsModified = true;
-                    foreach(var x in db.GearItems.Include(g=>g.Loaning).Where(l=>l.Loaning.Id==id))
+                    foreach(var x in db.GearLoanings.Where(l=>l.IdLoaning==id))
                     {
-                        x.Loaning = null;
+                        x.isActiveNow = false;
                         db.Update(x);
                     }
                     db.SaveChanges();

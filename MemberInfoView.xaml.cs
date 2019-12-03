@@ -2,20 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -212,10 +203,6 @@ namespace ClimbingClub
                 Margin = new Thickness(0, 10, 0, 0)
             };
             TextBox nameBox = new TextBox() { Margin = new Thickness(0, 10, 0, 0) };
-            TextBlock priceBlock = new TextBlock() { Text = "Enter price",
-                Margin = new Thickness(0, 10, 0, 0)
-            };
-            TextBox priceBox = new TextBox() { Margin = new Thickness(0, 10, 0, 0) };
             TextBlock descrBlock = new TextBlock() { Text = "Enter description",
                 Margin = new Thickness(0, 10, 0, 0)
             };
@@ -240,9 +227,17 @@ namespace ClimbingClub
             };
             using (var db = new ApplicationDbContext())
             {
-                foreach(var item in db.GearItems.Include(g=>g.Loaning))
+                List<int> GearIDsToRemove = new List<int>();
+                foreach(var itemLoan in db.GearLoanings)
                 {
-                    if (item.Loaning == null)
+                    if(itemLoan.isActiveNow==true)
+                    {
+                        GearIDsToRemove.Add(itemLoan.IdGearItem);
+                    }
+                }
+                foreach(var item in db.GearItems)
+                {
+                    if (!GearIDsToRemove.Contains(item.Id))
                     {
                         listGearItems.Items.Add(new CheckBox() { Content = item.Id + ", " + item.Name + ", " + item.Description });
                     }
@@ -250,15 +245,12 @@ namespace ClimbingClub
             }
             content.Children.Add(nameBlock);
             content.Children.Add(nameBox);
-            content.Children.Add(priceBlock);
-            content.Children.Add(priceBox);
             content.Children.Add(descrBlock);
             content.Children.Add(descrBox);
             content.Children.Add(expectedRetDate);
             content.Children.Add(datePicker);
             content.Children.Add(selectItemsBlock);
             content.Children.Add(listGearItems);
-            double priceVar = 0.0;
             
             ContentDialog loaningDialog = new ContentDialog()
             {
@@ -270,20 +262,23 @@ namespace ClimbingClub
             };
             if (await loaningDialog.ShowAsync() == ContentDialogResult.Primary)
             {
-                try
+                if(datePicker.Date.Date.CompareTo(DateTime.Now.Date)<0)
                 {
-                    priceVar = Double.Parse(priceBox.Text);
-                }
-                catch (Exception ex)
-                {
-                    MessageDialog messageDialog = new MessageDialog("You entered an invalid price. Please try again.", "Error");
+                    MessageDialog messageDialog = new MessageDialog("Return date can't be set to date which is before today's date. Please try again.", "Error");
                     messageDialog.ShowAsync();
                     return;
                 }
+
+                if (nameBox.Text.Length<1)
+                {
+                    MessageDialog messageDialog = new MessageDialog("Please set loaning name and try again.", "Error");
+                    messageDialog.ShowAsync();
+                    return;
+                }
+
                 Loaning loan = new Loaning()
                 {
                     Name = nameBox.Text,
-                    Price = priceVar,
                     Description = descrBox.Text,
                     LoanDate = DateTime.Now.Date,
                     ExpectedReturnDate = datePicker.Date.Date,
@@ -302,21 +297,113 @@ namespace ClimbingClub
                     Member membersLoan = db.Members.Where(m => m.Id == ID).FirstOrDefault();
                     loan.Member = membersLoan;
                     int count = 0;
+                    db.Loanings.Add(loan);
+                    db.SaveChanges();
+                    List<GearItemLoaning> listToAdd = new List<GearItemLoaning>();
                     foreach(var x in listView.Items)
                     {
                         if ((bool)((CheckBox)x).IsChecked)
                         {
                             int id = Int32.Parse(((CheckBox)x).Content.ToString().Split(',')[0]);
-                            GearItem item = db.GearItems.Include(g => g.Loaning).Where(g => g.Id == id).FirstOrDefault();
-                            item.Loaning = loan;
-                            db.Update(item);
+                            GearItem item = db.GearItems.Where(g => g.Id == id).FirstOrDefault();
+                            GearItemLoaning gearItemLoaning = new GearItemLoaning()
+                            {
+                                GearItem=item,
+                                Loaning=loan,
+                                IdGearItem=item.Id,
+                                IdLoaning=loan.Id,
+                                isActiveNow=true
+                            };
+                            db.GearLoanings.Add(gearItemLoaning);
                             count++;
                         }
                     }
                     loan.Count = count;
-                    db.Loanings.Add(loan);
+                    db.Update(loan);
                     db.SaveChanges();
                     trx.Commit();
+                }
+            }
+        }
+
+        private async void ChangeButton_Click(object sender, RoutedEventArgs e)
+        {
+            TextBlock nameBlock = new TextBlock()
+            {
+                Text="Name:"
+            };
+            TextBlock surnameBlock = new TextBlock()
+            {
+                Text = "Surname:"
+            };
+            TextBox nameBox = new TextBox();
+            TextBox surnameBox = new TextBox();
+            StackPanel content = new StackPanel() { Orientation = Orientation.Vertical };
+            content.Children.Add(nameBlock);
+            content.Children.Add(nameBox);
+            content.Children.Add(surnameBlock);
+            content.Children.Add(surnameBox);
+
+            ContentDialog paymentDialog = new ContentDialog()
+            {
+                Title = "Change member",
+                Content = content,
+                PrimaryButtonText = "Confirm",
+                SecondaryButtonText = "Cancel",
+                IsSecondaryButtonEnabled = true
+            };
+            Member member = null;
+            using(var db=new ApplicationDbContext())
+            {
+                member = db.Members.Where(m=>m.Id==ID).FirstOrDefault();
+            }
+            nameBox.Text = member.Name;
+            surnameBox.Text = member.Surname;
+            if (await paymentDialog.ShowAsync() == ContentDialogResult.Primary)
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    using (var trx = db.Database.BeginTransaction())
+                    {
+                        member = db.Members.Where(m => m.Id == ID).FirstOrDefault();
+                        if(nameBox.Text.Length>1)
+                        {
+                            member.Name = nameBox.Text;
+                        }
+                        if (surnameBox.Text.Length > 1)
+                        {
+                            member.Surname = surnameBox.Text;
+                        }
+                        db.Update(member);
+                        db.SaveChanges();
+                        trx.Commit();
+                    }
+                }
+            }
+        }
+
+        private async void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            ContentDialog deleteDialog = new ContentDialog
+            {
+                Title = "Delete member permanently?",
+                Content = "If you delete this member, you won't be able to recover it. Do you want to delete it?",
+                PrimaryButtonText = "Delete",
+                CloseButtonText = "Cancel"
+            };
+
+            if (await deleteDialog.ShowAsync() == ContentDialogResult.Primary)
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    using (var trx = db.Database.BeginTransaction())
+                    {
+                        Member memberToDelete = db.Members.Where(m => m.Id == ID).FirstOrDefault();
+                        memberToDelete.isActive = false;
+                        db.Update(memberToDelete);
+                        db.SaveChanges();
+                        trx.Commit();
+                    }
                 }
             }
         }

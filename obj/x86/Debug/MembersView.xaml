@@ -18,11 +18,10 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" BorderBrush="White" BorderThickness="1">
-            <TextBox x:ConnectionId='7' x:Name="NameBox" VerticalContentAlignment="Center" Text="Enter name" Margin="10,10,10,10"                                                          ></TextBox>
-            <TextBox x:ConnectionId='8' x:Name="SurnameBox" VerticalContentAlignment="Center" Text="Enter surname" Margin="10,10,10,10"                                                                ></TextBox>
-            <TextBox x:ConnectionId='9' x:Name="LevelBox" VerticalContentAlignment="Center" Text="Enter skill level" Margin="10,10,10,10"                                                            ></TextBox>
+            <TextBox x:ConnectionId='7' x:Name="SearchBox" VerticalContentAlignment="Center" Text="Search by surname" Margin="10,10,10,10"                                                                                                  />
+            <TextBox x:ConnectionId='8' x:Name="NameBox" VerticalContentAlignment="Center" Text="Enter name" Margin="350,10,10,10"                                                          ></TextBox>
+            <TextBox x:ConnectionId='9' x:Name="SurnameBox" VerticalContentAlignment="Center" Text="Enter surname" Margin="10,10,10,10"                                                                ></TextBox>
             <Button x:ConnectionId='10' Content="Add member" x:Name="AddButton" Margin="10,10,10,10"                        />
-            <TextBox x:ConnectionId='11' x:Name="SearchBox" VerticalContentAlignment="Center" Text="Search by surname" Margin="40,10,10,10"                                                                                                  />
         </StackPanel>
         <Grid Grid.Row="1" Grid.Column="0">
             <Grid.RowDefinitions>
@@ -36,7 +35,6 @@
                 <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Id"/>
                 <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Name"/>
                 <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Surname"/>
-                <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Skill level"/>
                 <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Present today"/>
             </StackPanel>
             <ListView x:ConnectionId='3' Grid.Row="1" Grid.Column="0" x:Name="MemberList">
@@ -47,7 +45,6 @@
                             <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Id}"/>
                             <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Name}"/>
                             <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Surname}"/>
-                            <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Level}"/>
                             <CheckBox x:ConnectionId='5' Margin="15,0,0,0" x:Name="TrainingCheckBox" Width="150" VerticalAlignment="Center" IsChecked="{Binding trainedToday}"                       />
                             <Button x:ConnectionId='6' x:Name="DetailsButton" Content="Details"                            />
                         </StackPanel>

@@ -13,7 +13,7 @@ namespace ClimbingClub.Library
         public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public int Level { get; set; }
+        public bool isActive { get; set; }
 
         [NotMapped]
         public bool trainedToday { get {

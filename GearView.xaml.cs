@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Popups;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -35,12 +36,18 @@ namespace ClimbingClub
         {
             using (var db = new ApplicationDbContext())
             {
-                GearList.ItemsSource = db.GearItems.Include(g=>g.Loaning);
-                allLoadedItems = db.GearItems.Include(g => g.Loaning).Include(m => m.Loaning.Member).ToList();
+                GearList.ItemsSource = db.GearItems;
+                allLoadedItems = db.GearItems.ToList();
             }
         }
         private void AddGearButton_Click(object sender, RoutedEventArgs e)
         {
+            if(NameBox.Text.Length<1 || DescrBox.Text.Length<1 || NameBox.Text.Equals("Enter name") || DescrBox.Text.Equals("Enter description"))
+            {
+                MessageDialog messageDialog = new MessageDialog("Please set all fields and try again.", "Error");
+                messageDialog.ShowAsync();
+                return;
+            }
             using(var db=new ApplicationDbContext())
             {
                 using(var trx=db.Database.BeginTransaction())
