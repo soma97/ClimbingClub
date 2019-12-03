@@ -18,8 +18,6 @@ using Windows.Globalization;
 using Windows.Storage;
 using Windows.UI.Popups;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 namespace ClimbingClub
 {
     /// <summary>
@@ -47,87 +45,11 @@ namespace ClimbingClub
         {
             using (var db = new ApplicationDbContext())
             {
-                /* Member pera = new Member() {
-                     Level = 1,
-                     Name = "Pera",
-                     Surname="Peric"
-                 };
-                 db.Members.Add(pera);
-                 Training trening = new Training()
-                 {
-                     TrainingDate = DateTime.Now,
-                     Member = pera
-                 };
-                 db.Trainings.Add(trening);
-                 db.SaveChanges();
-                 System.Diagnostics.Debug.WriteLine("USPIO JE PERA!!!");
-
-                 Loaning posudba = new Loaning()
-                 {
-                     Count=1,
-                     Name="posudba",
-                     Description="uzeo patike",
-                     Member=db.Members.Where(m=>m.Id==1).FirstOrDefault(),
-                     LoanDate=DateTime.Now,
-                     ReturnDate=DateTime.Now,
-                     ExpectedReturnDate=DateTime.Now
-                 };
-                 GearItem ajtem = new GearItem()
-                 {
-                     Loaning=posudba,
-                     Description="tike broj 43",
-                     Name="tikee"
-                 };
-
-                 db.Loanings.Add(posudba);
-                 db.GearItems.Add(ajtem);
-
-                 db.Loanings.RemoveRange(db.Loanings.Where(l => l.Count == 1));
-                 db.SaveChanges();
-                 db.MembershipFees.Add(new MembershipFee()
-                 {
-                     IsMonthly=true,
-                     Price=35,
-                     Payment=new DateTime(2019,6,25),
-                     Member=db.Members.Where(m=>m.Id==1).FirstOrDefault()
-                 });
-
-                 db.MembershipFees.Add(new MembershipFee()
-                 {
-                     IsMonthly = false,
-                     Price = 7,
-                     Payment = DateTime.Now,
-                     Member = db.Members.Where(m => m.Id == 1).FirstOrDefault()
-                 });
-
-                 db.SaveChanges();
-                 db.Trainings.Add(new Training()
-                {
-                    TrainingDate=DateTime.Now,
-                    Member= db.Members.Where(m => m.Id == 1).FirstOrDefault()
-                });
-                db.Trainings.Add(new Training()
-                {
-                    TrainingDate = new DateTime(2019, 10, 19),
-                    Member = db.Members.Where(m => m.Id == 1).FirstOrDefault()
-                });
-                db.SaveChanges();
-                 */
-
-
-                //System.Diagnostics.Debug.WriteLine(db.GearItems.Where(gi => gi.Name.Equals("tikee")).FirstOrDefault());
-                foreach (Training x in db.Trainings)
-                {
-                   // System.Diagnostics.Debug.WriteLine(x.TrainingDate +" "+ db.Trainings.Include(tr=>tr.Member).FirstOrDefault().Member.Name+"ASA");
-                }
                 foreach(Member x in db.Members)
                 {
                     System.Diagnostics.Debug.WriteLine(x.Id+" "+x.Name+" "+x.Surname+" ");
                 }
             }
-
-            
-        
         }
 
 
@@ -155,17 +77,23 @@ namespace ClimbingClub
         {
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
 
-            TextBlock monthlyBlock = new TextBlock() { Text = "Enter monthly fee" };
-            TextBlock oneTrainingBlock = new TextBlock() { Text = "Enter one training fee" };
+            TextBlock monthlyBlock = new TextBlock() { Text = "Enter monthly fee",
+                Margin=new Thickness(0,10,0,0)
+            };
+            TextBlock oneTrainingBlock = new TextBlock() { Text = "Enter one training fee",
+                Margin = new Thickness(0, 10, 0, 0)
+            };
             TextBox textBoxMonthly = new TextBox()
             {
                 Height = 35,
-                Text = localSettings.Values["monthly_fee"] as string
+                Text = localSettings.Values["monthly_fee"] as string,
+                Margin = new Thickness(0, 10, 0, 0)
             };
             TextBox textBoxOneTraining = new TextBox()
             {
                 Height = 35,
-                Text = localSettings.Values["one_training_fee"] as string
+                Text = localSettings.Values["one_training_fee"] as string,
+                Margin = new Thickness(0, 10, 0, 0)
             };
             StackPanel content = new StackPanel() { Orientation = Orientation.Vertical };
             content.Children.Add(monthlyBlock);

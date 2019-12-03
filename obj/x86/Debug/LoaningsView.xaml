@@ -20,7 +20,7 @@
             <RowDefinition Height="117*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="White" BorderThickness="1">
-            <TextBox x:ConnectionId='6' x:Name="SearchBox" VerticalAlignment="Center" Text="Search by loaner surname" Margin="10,0,0,0"                                                                                                  />
+            <TextBox x:ConnectionId='7' x:Name="SearchBox" VerticalAlignment="Center" Text="Search by loaner surname" Margin="10,0,0,0"                                                                                                  />
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Grid.Row="1" Grid.ColumnSpan="3">
             <TextBlock Margin="15,0,0,0" Width="30" VerticalAlignment="Center" Text="Id"/>
@@ -45,7 +45,8 @@
                         <TextBlock Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding Member.Name}"/>
                         <TextBlock Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding Member.Surname}"/>
                         <Button x:ConnectionId='4' x:Name="DescriptionButton" Margin="20,0,0,0" Content="Description"                                />
-                        <Button x:ConnectionId='5' x:Name="ReturnButton" Margin="15,0,0,0" Content="Return Loaning Items"                           />
+                        <Button x:ConnectionId='5' x:Name="ReturnButton" Margin="15,0,0,0" Content="Return Loaned Items"                           />
+                        <Button x:ConnectionId='6' x:Name="DeleteButton" Margin="15,0,0,0" Content="Delete Loaning"                           />
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

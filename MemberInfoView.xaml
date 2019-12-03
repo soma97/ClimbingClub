@@ -36,9 +36,11 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
+                        <TextBlock Visibility="Collapsed" Text="{Binding Id}"/>
                         <TextBlock Margin="55,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding timeFormat}"/>
                         <TextBlock Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding Price}"/>
                         <TextBlock Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding isMonthlyFormat}"/>
+                        <Button Margin="15,0,0,0" x:Name="DeleteButton" Content="Delete" Click="DeleteButton_Click_1"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -57,10 +59,10 @@
             <TextBlock x:Name="DebtSum" FontSize="14" HorizontalAlignment="Left" Margin="3,5,0,0"/>
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1">
-            <Button x:Name="PaymentButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="Add payment" Click="PaymentButton_Click"/>
-            <Button x:Name="LoaningButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="Add loaning" Click="LoaningButton_Click"/>
-            <Button x:Name="ChangeButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="Change member" Click="ChangeButton_Click"/>
-            <Button x:Name="DeleteButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="Delete member" Click="DeleteButton_Click"/>
+            <Button Width="130" x:Name="PaymentButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="Add payment" Click="PaymentButton_Click"/>
+            <Button Width="130" x:Name="LoaningButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="Add loaning" Click="LoaningButton_Click"/>
+            <Button Width="130" x:Name="ChangeButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="Edit member" Click="ChangeButton_Click"/>
+            <Button Width="130" x:Name="DeleteButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="Delete member" Click="DeleteButton_Click"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -45,7 +45,8 @@
                         <TextBlock Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding Member.Name}"/>
                         <TextBlock Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding Member.Surname}"/>
                         <Button x:Name="DescriptionButton" Margin="20,0,0,0" Content="Description" Click="DescriptionButton_Click"/>
-                        <Button x:Name="ReturnButton" Margin="15,0,0,0" Content="Return Loaning Items" Click="ReturnButton_Click"/>
+                        <Button x:Name="ReturnButton" Margin="15,0,0,0" Content="Return Loaned Items" Click="ReturnButton_Click"/>
+                        <Button x:Name="DeleteButton" Margin="15,0,0,0" Content="Delete Loaning" Click="DeleteButton_Click"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

@@ -25,7 +25,7 @@
         </Button>
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBlock Text="Training days" Margin="0,40,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <CalendarView x:ConnectionId='13' x:Name="TrainingCalendar" VerticalAlignment="Center" HorizontalAlignment="Center" SelectionMode="Multiple"/>
+            <CalendarView x:ConnectionId='14' x:Name="TrainingCalendar" VerticalAlignment="Center" HorizontalAlignment="Center" SelectionMode="Multiple"/>
         </StackPanel>
         <StackPanel Margin="50,0,0,0" VerticalAlignment="Bottom" Orientation="Horizontal" Grid.Row="0" Grid.Column="2" Height="20">
             <TextBlock Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="Date"/>
@@ -36,9 +36,11 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
+                        <TextBlock Visibility="Collapsed" Text="{Binding Id}"/>
                         <TextBlock Margin="55,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding timeFormat}"/>
                         <TextBlock Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding Price}"/>
                         <TextBlock Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding isMonthlyFormat}"/>
+                        <Button x:ConnectionId='13' Margin="15,0,0,0" x:Name="DeleteButton" Content="Delete"                             />
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -57,10 +59,10 @@
             <TextBlock x:ConnectionId='10' x:Name="DebtSum" FontSize="14" HorizontalAlignment="Left" Margin="3,5,0,0"/>
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1">
-            <Button x:ConnectionId='5' x:Name="PaymentButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="Add payment"                            />
-            <Button x:ConnectionId='6' x:Name="LoaningButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="Add loaning"                            />
-            <Button x:ConnectionId='7' x:Name="ChangeButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="Change member"                           />
-            <Button x:ConnectionId='8' x:Name="DeleteButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="Delete member"                           />
+            <Button x:ConnectionId='5' Width="130" x:Name="PaymentButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="Add payment"                            />
+            <Button x:ConnectionId='6' Width="130" x:Name="LoaningButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="Add loaning"                            />
+            <Button x:ConnectionId='7' Width="130" x:Name="ChangeButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="Edit member"                           />
+            <Button x:ConnectionId='8' Width="130" x:Name="DeleteButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="Delete member"                           />
         </StackPanel>
     </Grid>
 </Page>

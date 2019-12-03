@@ -9,8 +9,6 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace ClimbingClub
 {
     /// <summary>
@@ -58,6 +56,7 @@ namespace ClimbingClub
             List<Training> debts = new List<Training>();
             using (var db = new ApplicationDbContext())
             {
+                PaymentList.ItemsSource = db.MembershipFees.Include(m => m.Member).Where(fee => fee.Member.Id == ID).OrderByDescending(fee => fee.Payment).ToList();
                 var trainings = db.Trainings.Include(tr => tr.Member).Where(tr => tr.Member.Id == ID).OrderByDescending(tr=>tr.TrainingDate).ToList();
                 List<MembershipFee> payments = (List<MembershipFee>)PaymentList.ItemsSource;
                 var paymentMonthList = payments.Where(fee => fee.IsMonthly);
@@ -71,22 +70,37 @@ namespace ClimbingClub
                     }
                 }
             }
-            DebtList.ItemsSource = debts;
-            int[] unpaidTrainingsPerMonth = new int[12];
+            DebtList.ItemsSource = debts = debts.OrderByDescending(tr=>tr.TrainingDate).ToList();
+            if (debts.Count == 0)
+            {
+                DebtSum.Text = "Member owns 0 KM";
+                return;
+            }
+            int lastYear = debts.First().TrainingDate.Year;
+            int firstYear = debts.Last().TrainingDate.Year;
+            int size = lastYear-firstYear+1;
+            int[][] unpaidTrainingsPerMonth = new int[size][];
+            for(int i=0;i<size;++i)
+            {
+                unpaidTrainingsPerMonth[i] = new int[12];
+            }
             foreach(var x in debts)
             {
-                unpaidTrainingsPerMonth[x.TrainingDate.Month-1]++;
+                unpaidTrainingsPerMonth[x.TrainingDate.Date.Year - firstYear][x.TrainingDate.Month-1]++;
             }
             int sum = 0;
-            for(int i=0;i<12;++i)
+            for (int k = 0; k < size; ++k)
             {
-                if(unpaidTrainingsPerMonth[i]>6)
+                for (int i = 0; i < 12; ++i)
                 {
-                    sum += monthlyFee;
-                }
-                else
-                {
-                    sum += unpaidTrainingsPerMonth[i] * oneTrainingFee;
+                    if (unpaidTrainingsPerMonth[k][i] > 6)
+                    {
+                        sum += monthlyFee;
+                    }
+                    else
+                    {
+                        sum += unpaidTrainingsPerMonth[k][i] * oneTrainingFee;
+                    }
                 }
             }
             DebtSum.Text = "Member owns " +sum+ " KM";
@@ -134,6 +148,7 @@ namespace ClimbingClub
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.StackTrace);
                     MessageDialog dialog = new MessageDialog("Value not set. Please enter a number.", "Error");
                     dialog.ShowAsync();
                 }
@@ -330,14 +345,20 @@ namespace ClimbingClub
         {
             TextBlock nameBlock = new TextBlock()
             {
-                Text="Name:"
+                Text="Name:",
+                Margin=new Thickness(0,10,0,0)
             };
             TextBlock surnameBlock = new TextBlock()
             {
-                Text = "Surname:"
+                Text = "Surname:",
+                Margin = new Thickness(0,10, 0, 0)
             };
-            TextBox nameBox = new TextBox();
-            TextBox surnameBox = new TextBox();
+            TextBox nameBox = new TextBox() {
+                Margin=new Thickness(0,10,0,0)
+            };
+            TextBox surnameBox = new TextBox() { 
+                Margin=new Thickness(0,10,0,0)
+            };
             StackPanel content = new StackPanel() { Orientation = Orientation.Vertical };
             content.Children.Add(nameBlock);
             content.Children.Add(nameBox);
@@ -361,19 +382,19 @@ namespace ClimbingClub
             surnameBox.Text = member.Surname;
             if (await paymentDialog.ShowAsync() == ContentDialogResult.Primary)
             {
+                if(nameBox.Text.Length<1 || surnameBox.Text.Length<1)
+                {
+                    MessageDialog messageDialog = new MessageDialog("Please set all fields and try again.", "Error");
+                    messageDialog.ShowAsync();
+                    return;
+                }
                 using (var db = new ApplicationDbContext())
                 {
                     using (var trx = db.Database.BeginTransaction())
                     {
                         member = db.Members.Where(m => m.Id == ID).FirstOrDefault();
-                        if(nameBox.Text.Length>1)
-                        {
-                            member.Name = nameBox.Text;
-                        }
-                        if (surnameBox.Text.Length > 1)
-                        {
-                            member.Surname = surnameBox.Text;
-                        }
+                        member.Name = nameBox.Text;
+                        member.Surname = surnameBox.Text;
                         db.Update(member);
                         db.SaveChanges();
                         trx.Commit();
@@ -406,6 +427,23 @@ namespace ClimbingClub
                     }
                 }
             }
+        }
+
+        private void DeleteButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            StackPanel realSender = (StackPanel)((Button)sender).Parent;
+            int id = Int32.Parse(((TextBlock)realSender.Children[0]).Text);
+            using (var db=new ApplicationDbContext())
+            {
+                using(var trx=db.Database.BeginTransaction())
+                {
+                    MembershipFee feeToDelete = db.MembershipFees.Where(mf => mf.Id == id).FirstOrDefault();
+                    db.MembershipFees.Remove(feeToDelete);
+                    db.SaveChanges();
+                    trx.Commit();
+                }
+            }
+            RefreshDebt();
         }
     }
 }

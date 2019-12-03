@@ -15,8 +15,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace ClimbingClub
 {
     /// <summary>
@@ -139,6 +137,29 @@ namespace ClimbingClub
             {
                 SearchBox.Text = "";
             }
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            StackPanel realSender = (StackPanel)((Button)sender).Parent;
+            int id = Int32.Parse(((TextBlock)realSender.Children[0]).Text);
+            using (var db = new ApplicationDbContext())
+            {
+                using (var trx = db.Database.BeginTransaction())
+                {
+                    Loaning loan = db.Loanings.Where(l => l.Id == id).FirstOrDefault();
+                    db.Loanings.Remove(loan);
+                    List<GearItemLoaning> gearItemsToDelete = new List<GearItemLoaning>();
+                    foreach (var x in db.GearLoanings.Where(l => l.IdLoaning == id))
+                    {
+                        gearItemsToDelete.Add(x);
+                    }
+                    db.GearLoanings.RemoveRange(gearItemsToDelete);
+                    db.SaveChanges();
+                    trx.Commit();
+                }
+            }
+            FillLoanList();
         }
     }
 }
