@@ -29,6 +29,7 @@ namespace ClimbingClub
     {
         public static Frame MainActiveFrame;
         public static string user = null;
+        public static bool isAdmin = false;
         public MainPage()
         {
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
@@ -58,7 +59,7 @@ namespace ClimbingClub
             {
                 if(!db.Users.Where(u=>u.Username.Equals("admin")).Any())
                 {
-                    db.Users.Add(new User() { Username="admin",Password=GetHash("admin")});
+                    db.Users.Add(new User() { Username="admin",Password=GetHash("admin"),isAdmin=true});
                     db.SaveChanges();
                 }
             }
@@ -103,6 +104,12 @@ namespace ClimbingClub
             if (user == null)
             {
                 MessageDialog dialog = new MessageDialog("You must login first.", "Error");
+                dialog.ShowAsync();
+                return;
+            }
+            if(isAdmin==false)
+            {
+                MessageDialog dialog = new MessageDialog("You need admin privileges to change fees.", "Error");
                 dialog.ShowAsync();
                 return;
             }
@@ -184,6 +191,7 @@ namespace ClimbingClub
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
             user = null;
+            isAdmin = false;
             PivotTab.SelectedIndex = 0;
             ActiveFrame.Navigate(typeof(HomeView));
         }

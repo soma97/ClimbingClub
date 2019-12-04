@@ -47,6 +47,7 @@ namespace ClimbingClub
                 PasswordBox.IsEnabled = false;
                 LoginButton.IsEnabled = false;
             }
+            AddUserButton.IsEnabled = MainPage.isAdmin;
         }
 
         private async void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -57,10 +58,13 @@ namespace ClimbingClub
                 if (user!=null && user.Password.Equals(GetHash(PasswordBox.Password)))
                 {
                     AddUserButton.Visibility = Visibility.Visible;
+                    
+                    AddUserButton.IsEnabled = MainPage.isAdmin = user.isAdmin;
+                    MainPage.user = user.Username;
+
                     UsernameBox.IsEnabled = false;
                     PasswordBox.IsEnabled = false;
                     LoginButton.IsEnabled = false;
-                    MainPage.user = user.Username;
                 }
                 else
                 {
@@ -76,11 +80,13 @@ namespace ClimbingClub
             TextBlock passwordBlock = new TextBlock() { Text = "Enter password", Margin = new Thickness(0, 10, 0, 0) };
             TextBox usernameBox = new TextBox() { Margin = new Thickness(0, 10, 0, 0) };
             PasswordBox passwordBox = new PasswordBox() { Margin = new Thickness(0, 10, 0, 0) };
+            CheckBox adminCheck = new CheckBox() { Content = "Admin", Margin = new Thickness(0, 10, 0, 0) };
             StackPanel content = new StackPanel() { Orientation = Orientation.Vertical };
             content.Children.Add(usernameBlock);
             content.Children.Add(usernameBox);
             content.Children.Add(passwordBlock);
             content.Children.Add(passwordBox);
+            content.Children.Add(adminCheck);
 
             ContentDialog userDialog = new ContentDialog()
             {
@@ -107,7 +113,8 @@ namespace ClimbingClub
                         return;
                     }
                     db.Users.Add(new User() { Username = usernameBox.Text,
-                        Password=GetHash(passwordBox.Password)
+                        Password=GetHash(passwordBox.Password),
+                        isAdmin=(bool)adminCheck.IsChecked
                     });
                     db.SaveChanges();
                 }
