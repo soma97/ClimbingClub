@@ -46,6 +46,20 @@ namespace ClimbingClub
                 messageDialog.ShowAsync();
                 return;
             }
+            int number = 0;
+            try
+            {
+                number = Int32.Parse(CountBox.Text);
+                if(number<=0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+            }catch(Exception ex)
+            {
+                MessageDialog messageDialog = new MessageDialog("Please set a positive number in number field.", "Error");
+                messageDialog.ShowAsync();
+                return;
+            }
             using(var db=new ApplicationDbContext())
             {
                 using(var trx=db.Database.BeginTransaction())
@@ -53,7 +67,8 @@ namespace ClimbingClub
                     GearItem item = new GearItem()
                     {
                         Name=NameBox.Text,
-                        Description=DescrBox.Text
+                        Description=DescrBox.Text,
+                        CountAvailable=number
                     };
                     db.GearItems.Add(item);
                     db.SaveChanges();
@@ -150,6 +165,62 @@ namespace ClimbingClub
             {
                 DescrBox.Text = "Enter description";
             }
+        }
+
+        private void CountBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (CountBox.Text.Length < 1)
+            {
+                CountBox.Text = "Enter number of gear items";
+            }
+        }
+
+        private void CountBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (CountBox.Text.Equals("Enter number of gear items"))
+            {
+                CountBox.Text = "";
+            }
+        }
+
+        private async void LoanStatusButton_Click(object sender, RoutedEventArgs e)
+        {
+            StackPanel realSender = (StackPanel)((Button)sender).Parent;
+            int id = Int32.Parse(((TextBlock)realSender.Children[0]).Text);
+            int sum = 0;
+            string result = "Items loaned to:";
+
+            using (var db = new ApplicationDbContext())
+            {
+                foreach(var x in db.GearLoanings.Where(g => g.IdGearItem == id && g.isActiveNow==true))
+                {
+                    Member member = db.Loanings.Include(l => l.Member).Where(l => l.Id == x.IdLoaning).FirstOrDefault().Member;
+                    result += Environment.NewLine + member.Name + " " + member.Surname + " (" + x.CountLoaned + ")";
+                    sum += x.CountLoaned;
+                }
+            }
+            TextBlock sumLoanedBlock = new TextBlock() {
+                Text = "Items available: " + (Int32.Parse(((TextBlock)realSender.Children[3]).Text) - sum)+Environment.NewLine
+            };
+            TextBlock membersBlock = new TextBlock()
+            {
+                Text=result
+            };
+            StackPanel content = new StackPanel() { Orientation = Orientation.Vertical };
+            content.Children.Add(sumLoanedBlock);
+            if (sum > 0)
+            {
+                content.Children.Add(membersBlock);
+            }
+
+            ContentDialog descrDialog = new ContentDialog()
+            {
+                Title = "Loan status",
+                Content = content,
+                PrimaryButtonText = "Confirm"
+            };
+
+            descrDialog.ShowAsync();
         }
     }
 }

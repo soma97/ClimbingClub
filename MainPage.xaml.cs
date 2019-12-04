@@ -17,6 +17,8 @@ using Microsoft.EntityFrameworkCore;
 using Windows.Globalization;
 using Windows.Storage;
 using Windows.UI.Popups;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace ClimbingClub
 {
@@ -26,11 +28,21 @@ namespace ClimbingClub
     public sealed partial class MainPage : Page
     {
         public static Frame MainActiveFrame;
+        public static string user = null;
         public MainPage()
         {
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+            if ((localSettings.Values["theme"] as string).Equals("blue"))
+            {
+                this.Style = (Style)Application.Current.Resources["BlueTheme"];
+            }
+            else if((localSettings.Values["theme"] as string).Equals("light"))
+            {
+                this.Style = (Style)Application.Current.Resources["LightTheme"];
+            }
             this.InitializeComponent();
             MainActiveFrame = ActiveFrame;
-            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+     
             if (localSettings.Values["monthly_fee"]==null)
             {
                 localSettings.Values["monthly_fee"] = "35";
@@ -40,30 +52,43 @@ namespace ClimbingClub
                 localSettings.Values["one_training_fee"] = "5";
             }
         }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             using (var db = new ApplicationDbContext())
             {
-                foreach(Member x in db.Members)
+                if(!db.Users.Where(u=>u.Username.Equals("admin")).Any())
                 {
-                    System.Diagnostics.Debug.WriteLine(x.Id+" "+x.Name+" "+x.Surname+" ");
+                    db.Users.Add(new User() { Username="admin",Password=GetHash("admin")});
+                    db.SaveChanges();
                 }
             }
+        }
+
+        private string GetHash(string inputString)
+        {
+            HashAlgorithm algorithm = SHA256.Create();
+            byte[] byteResult = algorithm.ComputeHash(Encoding.UTF8.GetBytes(inputString));
+            return Convert.ToBase64String(byteResult);
         }
 
 
         private void rootPivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(PivotTab.SelectedIndex==0)
+            if (user == null && PivotTab.SelectedIndex != 0)
+            {
+                MessageDialog dialog = new MessageDialog("You must login first.", "Error");
+                dialog.ShowAsync();
+                return;
+            }
+            if (PivotTab.SelectedIndex == 0)
             {
                 ActiveFrame.Navigate(typeof(HomeView));
             }
-            else if(PivotTab.SelectedIndex==1)
+            else if (PivotTab.SelectedIndex == 1)
             {
                 ActiveFrame.Navigate(typeof(MembersView));
             }
-            else if(PivotTab.SelectedIndex==2)
+            else if (PivotTab.SelectedIndex == 2)
             {
                 ActiveFrame.Navigate(typeof(LoaningsView));
             }
@@ -75,6 +100,12 @@ namespace ClimbingClub
 
         private async void ChangeFees_Click(object sender, RoutedEventArgs e)
         {
+            if (user == null)
+            {
+                MessageDialog dialog = new MessageDialog("You must login first.", "Error");
+                dialog.ShowAsync();
+                return;
+            }
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
 
             TextBlock monthlyBlock = new TextBlock() { Text = "Enter monthly fee",
@@ -124,6 +155,37 @@ namespace ClimbingClub
                     dialog.ShowAsync();
                 }
             }
+        }
+
+        private void DarkThemeOption_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+            localSettings.Values["theme"] = "dark";
+            MessageDialog dialog = new MessageDialog("Please restart app to make changes.", "Notification");
+            dialog.ShowAsync();
+        }
+
+        private void LightThemeOption_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+            localSettings.Values["theme"] = "light";
+            MessageDialog dialog = new MessageDialog("Please restart app to make changes.", "Notification");
+            dialog.ShowAsync();
+        }
+
+        private void BlueThemeOption_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+            localSettings.Values["theme"] = "blue";
+            MessageDialog dialog = new MessageDialog("Please restart app to make changes.", "Notification");
+            dialog.ShowAsync();
+        }
+
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {
+            user = null;
+            PivotTab.SelectedIndex = 0;
+            ActiveFrame.Navigate(typeof(HomeView));
         }
     }
 }

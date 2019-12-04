@@ -14,6 +14,28 @@ namespace ClimbingClub.Library
         public string Name { get; set; }
         public string Description { get; set; }
 
+        public int CountAvailable { get; set; }
+
+        [NotMapped]
+        public List<int> itemsNumber { get
+            {
+                int sumLoaned = 0;
+
+                using (var db = new ApplicationDbContext())
+                {
+                    foreach (var x in db.GearLoanings.Where(g => g.IdGearItem == Id && g.isActiveNow == true))
+                    {
+                        sumLoaned += x.CountLoaned;
+                    }
+                }
+                List<int> list = new List<int>();
+                for(int i=0;i<=CountAvailable-sumLoaned;++i)
+                {
+                    list.Add(i);
+                }
+                return list;
+            } }
+
         [NotMapped]
         public string Loan { get
             {

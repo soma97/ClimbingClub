@@ -5,8 +5,7 @@
     xmlns:local="using:ClimbingClub"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -16,7 +15,15 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0">
-            <Image HorizontalAlignment="Stretch" Source="/Assets/sport-muscles-climbing-climber-9606.jpg"/>
+            <StackPanel.Background>
+                <ImageBrush ImageSource="/Assets/sport-muscles-climbing-climber-9606.jpg" Opacity="0.3"/>
+            </StackPanel.Background>
+            <TextBlock Text="Enter username" Margin="50,10,0,0"></TextBlock>
+            <TextBox x:ConnectionId='2' x:Name="UsernameBox" HorizontalAlignment="Left" Width="150" Margin="50,10,0,0"></TextBox>
+            <TextBlock Text="Enter password" Margin="50,10,0,0"></TextBlock>
+            <PasswordBox x:ConnectionId='3' x:Name="PasswordBox" HorizontalAlignment="Left" Width="150" Margin="50,10,0,0"></PasswordBox>
+            <Button x:ConnectionId='4' x:Name="LoginButton" Content="Login" Width="150" HorizontalAlignment="Left" Margin="50,10,0,0"                          />
+            <Button x:ConnectionId='5' x:Name="AddUserButton" Visibility="Collapsed" Content="Add user" Width="150" HorizontalAlignment="Left" Margin="50,100,0,0"                            />
         </StackPanel>
 
     </Grid>

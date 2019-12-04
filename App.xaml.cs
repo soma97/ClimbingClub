@@ -9,6 +9,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -30,6 +31,19 @@ namespace ClimbingClub
         /// </summary>
         public App()
         {
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+            if (localSettings.Values["theme"] == null)
+            {
+                localSettings.Values["theme"] = "dark";
+            }
+            if((localSettings.Values["theme"] as string).Equals("dark"))
+            {
+                this.RequestedTheme = ApplicationTheme.Dark;
+            }
+            else if((localSettings.Values["theme"] as string).Equals("light"))
+            {
+                this.RequestedTheme = ApplicationTheme.Light;
+            }
             this.InitializeComponent();
             this.Suspending += OnSuspending;
             using (var db=new ApplicationDbContext())

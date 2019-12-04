@@ -5,8 +5,7 @@
     xmlns:local="using:ClimbingClub"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="Black" Loaded="Page_Loaded">
+    mc:Ignorable="d" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -34,10 +33,12 @@
                             <MenuFlyoutItem Text="English"/>
                         </MenuFlyoutSubItem>
                         <MenuFlyoutSubItem Text="Change theme">
-                            <MenuFlyoutItem Text="Dark theme"/>
-                            <MenuFlyoutItem Text="Light theme"/>
+                            <MenuFlyoutItem x:Name="DarkThemeOption" Text="Dark theme" Click="DarkThemeOption_Click"/>
+                            <MenuFlyoutItem x:Name="LightThemeOption" Text="Light theme" Click="LightThemeOption_Click"/>
+                            <MenuFlyoutItem x:Name="BlueThemeOption" Text="Blue theme" Click="BlueThemeOption_Click"/>
                         </MenuFlyoutSubItem>
                         <MenuFlyoutItem x:Name="ChangeFees" Text="Change fees" Click="ChangeFees_Click"/>
+                        <MenuFlyoutItem x:Name="LogOut" Text="Log out" Click="LogOut_Click"/>
                     </MenuFlyout>
                 </Button.Flyout>
             </Button>

@@ -242,19 +242,14 @@ namespace ClimbingClub
             };
             using (var db = new ApplicationDbContext())
             {
-                List<int> GearIDsToRemove = new List<int>();
-                foreach(var itemLoan in db.GearLoanings)
-                {
-                    if(itemLoan.isActiveNow==true)
-                    {
-                        GearIDsToRemove.Add(itemLoan.IdGearItem);
-                    }
-                }
                 foreach(var item in db.GearItems)
                 {
-                    if (!GearIDsToRemove.Contains(item.Id))
+                    if (item.itemsNumber.Count>1)
                     {
-                        listGearItems.Items.Add(new CheckBox() { Content = item.Id + ", " + item.Name + ", " + item.Description });
+                        StackPanel contentItem = new StackPanel() { Orientation = Orientation.Horizontal };
+                        contentItem.Children.Add(new CheckBox() { Content = item.Id + ", " + item.Name + ", " + item.Description });
+                        contentItem.Children.Add(new ComboBox() { Text="Count:", ItemsSource=item.itemsNumber, SelectedIndex=0,Margin=new Thickness(10,0,0,0) });
+                        listGearItems.Items.Add(contentItem);
                     }
                 }
             }
@@ -297,7 +292,7 @@ namespace ClimbingClub
                     Description = descrBox.Text,
                     LoanDate = DateTime.Now.Date,
                     ExpectedReturnDate = datePicker.Date.Date,
-                    ReturnDate = DateTime.MinValue,
+                    ReturnDate = DateTime.MinValue
                 };
                 AddLoaning(loan, listGearItems);
             }
@@ -314,27 +309,37 @@ namespace ClimbingClub
                     int count = 0;
                     db.Loanings.Add(loan);
                     db.SaveChanges();
-                    List<GearItemLoaning> listToAdd = new List<GearItemLoaning>();
                     foreach(var x in listView.Items)
                     {
-                        if ((bool)((CheckBox)x).IsChecked)
+                        CheckBox checkBox = (CheckBox)((StackPanel)x).Children[0];
+                        ComboBox comboBox = (ComboBox)((StackPanel)x).Children[1];
+                        if ((bool)checkBox.IsChecked && ((int)comboBox.SelectedItem)>0)
                         {
-                            int id = Int32.Parse(((CheckBox)x).Content.ToString().Split(',')[0]);
+                            int id = Int32.Parse(checkBox.Content.ToString().Split(',')[0]);
                             GearItem item = db.GearItems.Where(g => g.Id == id).FirstOrDefault();
                             GearItemLoaning gearItemLoaning = new GearItemLoaning()
                             {
-                                GearItem=item,
-                                Loaning=loan,
-                                IdGearItem=item.Id,
-                                IdLoaning=loan.Id,
-                                isActiveNow=true
+                                 GearItem=item,
+                                 Loaning=loan,
+                                 IdGearItem=item.Id,
+                                 IdLoaning=loan.Id,
+                                 isActiveNow=true,
+                                 CountLoaned=(int)comboBox.SelectedItem
                             };
                             db.GearLoanings.Add(gearItemLoaning);
                             count++;
                         }
                     }
                     loan.Count = count;
-                    db.Update(loan);
+                    loan.user= db.Users.Where(u => u.Username.Equals(MainPage.user)).FirstOrDefault();
+                    if (count==0)
+                    {
+                        db.Loanings.Remove(loan);
+                    }
+                    else
+                    {
+                        db.Update(loan);
+                    }
                     db.SaveChanges();
                     trx.Commit();
                 }

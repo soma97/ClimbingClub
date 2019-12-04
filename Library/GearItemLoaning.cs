@@ -17,6 +17,7 @@ namespace ClimbingClub.Library
         public int IdGearItem { get; set; }
 
         public bool isActiveNow { get; set; }
+        public int CountLoaned { get; set; }
 
         public virtual Loaning Loaning { get; set; }
         public virtual GearItem GearItem { get; set; }

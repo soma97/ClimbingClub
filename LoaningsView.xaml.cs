@@ -33,8 +33,8 @@ namespace ClimbingClub
         {
             using (var db = new ApplicationDbContext())
             {
-                LoaningList.ItemsSource = db.Loanings.Include(l => l.Member);
-                allLoaningsLoaded = db.Loanings.Include(l=>l.Member).ToList();
+                LoaningList.ItemsSource = db.Loanings.Include(l => l.Member).Include(l=>l.user);
+                allLoaningsLoaded = db.Loanings.Include(l=>l.Member).Include(l => l.user).ToList();
             }
         }
         private async void DescriptionButton_Click(object sender, RoutedEventArgs e)
@@ -52,7 +52,7 @@ namespace ClimbingClub
                 foreach (var x in db.GearLoanings.Where(gl=>gl.IdLoaning==id))
                 {
                     GearItem item = db.GearItems.Where(gi => gi.Id == x.IdGearItem).FirstOrDefault();
-                    listItems.Items.Add(item.Id + ", "+item.Name + ", " + item.Description);
+                    listItems.Items.Add(item.Name + ", " + item.Description + ",  Count: "+x.CountLoaned);
                 }
             }
             StackPanel content = new StackPanel() { Orientation = Orientation.Vertical };
