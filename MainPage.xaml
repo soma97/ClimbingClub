@@ -5,7 +5,8 @@
     xmlns:local="using:ClimbingClub"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Loaded="Page_Loaded">
+    mc:Ignorable="d" Loaded="Page_Loaded"
+    Style="{ThemeResource ResourceKey=PageStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -18,10 +19,10 @@
             <ColumnDefinition Width="341*"/>
         </Grid.ColumnDefinitions>
         <Pivot x:Name="PivotTab" Grid.Row="0" Grid.Column="0" SelectionChanged="rootPivot_SelectionChanged">
-            <PivotItem Header="Home" TabIndex="0"/>
-            <PivotItem Header="Members" TabIndex="1"/>
-            <PivotItem Header="Loanings" TabIndex="2"/>
-            <PivotItem Header="Gear" TabIndex="3"/>
+            <PivotItem Style="{ThemeResource ResourceKey=PivotStyle}" Header="Home" TabIndex="0"/>
+            <PivotItem Style="{ThemeResource ResourceKey=PivotStyle}" Header="Members" TabIndex="1"/>
+            <PivotItem Style="{ThemeResource ResourceKey=PivotStyle}" Header="Loanings" TabIndex="2"/>
+            <PivotItem Style="{ThemeResource ResourceKey=PivotStyle}" Header="Gear" TabIndex="3"/>
         </Pivot>
         <StackPanel Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Margin="0,0,0,0" Orientation="Horizontal">
             <Button VerticalAlignment="Top" HorizontalAlignment="Right" Height="50" Width="50">

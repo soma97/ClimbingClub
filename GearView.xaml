@@ -5,7 +5,8 @@
     xmlns:local="using:ClimbingClub"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Style="{ThemeResource ResourceKey=PageStyle}">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -18,30 +19,30 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="573*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Orientation="Horizontal" BorderBrush="White" BorderThickness="1">
-            <TextBox x:Name="SearchBox" Text="Search by name" Margin="10,0,0,0" VerticalAlignment="Center" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus" TextChanged="SearchBox_TextChanged"/>
-            <TextBox Margin="400,10,10,10" Text="Enter name" x:Name="NameBox" VerticalAlignment="Center" LostFocus="NameBox_LostFocus" GotFocus="NameBox_GotFocus"/>
-            <TextBox Margin="10,10,10,10" Text="Enter description" x:Name="DescrBox" VerticalAlignment="Center" GotFocus="DescrBox_GotFocus" LostFocus="DescrBox_LostFocus"/>
-            <TextBox Margin="10,10,10,10" Text="Enter number of gear items" x:Name="CountBox" VerticalAlignment="Center" LostFocus="CountBox_LostFocus" GotFocus="CountBox_GotFocus"/>
-            <Button x:Name="AddGearButton" Content="Add gear item" Margin="30,10,10,10" Click="AddGearButton_Click"/>
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Orientation="Horizontal" Style="{ThemeResource ResourceKey=StackPanelStyle}">
+            <TextBox Style="{ThemeResource ResourceKey=TextBoxStyle}" x:Name="SearchBox" Text="Search by name" Margin="10,0,0,0" VerticalAlignment="Center" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus" TextChanged="SearchBox_TextChanged"/>
+            <TextBox Style="{ThemeResource ResourceKey=TextBoxStyle}" Margin="400,10,10,10" Text="Enter name" x:Name="NameBox" VerticalAlignment="Center" LostFocus="NameBox_LostFocus" GotFocus="NameBox_GotFocus"/>
+            <TextBox Style="{ThemeResource ResourceKey=TextBoxStyle}" Margin="10,10,10,10" Text="Enter description" x:Name="DescrBox" VerticalAlignment="Center" GotFocus="DescrBox_GotFocus" LostFocus="DescrBox_LostFocus"/>
+            <TextBox Style="{ThemeResource ResourceKey=TextBoxStyle}" Margin="10,10,10,10" Text="Enter number of gear items" x:Name="CountBox" VerticalAlignment="Center" LostFocus="CountBox_LostFocus" GotFocus="CountBox_GotFocus"/>
+            <Button Style="{ThemeResource ResourceKey=ButtonStyle}" x:Name="AddGearButton" Content="Add gear item" Margin="30,10,10,10" Click="AddGearButton_Click"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Grid.Row="1" Grid.ColumnSpan="3">
-            <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Id"/>
-            <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Name"/>
-            <TextBlock Margin="15,0,0,0" Width="350" VerticalAlignment="Center" Text="Description"/>
-            <TextBlock Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="Total Count"/>
-            <TextBlock Margin="15,0,0,0" Width="200" VerticalAlignment="Center" Text="Loan status"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Id"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Name"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="350" VerticalAlignment="Center" Text="Description"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="Total Count"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="200" VerticalAlignment="Center" Text="Loan status"/>
         </StackPanel>
         <ListView Grid.Row="3" Grid.ColumnSpan="3" x:Name="GearList">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Id}"/>
-                        <TextBlock Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Name}"/>
-                        <TextBlock Margin="15,0,0,0" Width="350" VerticalAlignment="Center" Text="{Binding Description}"/>
-                        <TextBlock Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding CountAvailable}"/>
-                        <Button Margin="15,0,0,0" VerticalAlignment="Center" x:Name="LoanStatusButton" Content="Loan status" Click="LoanStatusButton_Click"/>
-                        <Button Margin="15,0,0,0" VerticalAlignment="Center" x:Name="DeleteButton" Content="Delete" Click="DeleteButton_Click"/>
+                        <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Id}"/>
+                        <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Name}"/>
+                        <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="350" VerticalAlignment="Center" Text="{Binding Description}"/>
+                        <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding CountAvailable}"/>
+                        <Button Style="{ThemeResource ResourceKey=ButtonStyle}" Margin="15,0,0,0" VerticalAlignment="Center" x:Name="LoanStatusButton" Content="Loan status" Click="LoanStatusButton_Click"/>
+                        <Button Style="{ThemeResource ResourceKey=ButtonStyle}" Margin="15,0,0,0" VerticalAlignment="Center" x:Name="DeleteButton" Content="Delete" Click="DeleteButton_Click"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

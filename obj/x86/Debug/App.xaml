@@ -4,16 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ClimbingClub">
     <Application.Resources>
-        <Style x:Key="BlueTheme" TargetType="Page">
-            <Setter Property="FontFamily" Value="Times New Roman"/>
-            <Setter Property="BorderBrush" Value="White"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Background" Value="DodgerBlue"/>
-            <Setter Property="BorderBrush" Value="Black"/>
-        </Style>
-        <Style x:Key="LightTheme" TargetType="Page">
-            <Setter Property="FontFamily" Value="Courier New"/>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
 

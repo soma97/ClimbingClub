@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-12-04T22:06:00.236</Modified>
+      <Modified>2019-12-05T13:52:41.307</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\ClimbingClub.exe">
       <PackagePath>entrypoint\ClimbingClub.exe</PackagePath>
-      <Modified>2019-12-04T22:05:59.721</Modified>
+      <Modified>2019-12-05T13:52:40.056</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\milos\.nuget\packages\microsoft.aspnetcore.hosting.abstractions\1.0.2\lib\netstandard1.3\Microsoft.AspNetCore.Hosting.Abstractions.dll">
       <PackagePath>Microsoft.AspNetCore.Hosting.Abstractions.dll</PackagePath>
@@ -870,35 +870,47 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\ClimbingClub.xr.xml">
       <PackagePath>ClimbingClub.xr.xml</PackagePath>
-      <Modified>2019-12-04T20:44:05.846</Modified>
+      <Modified>2019-12-05T13:42:44.792</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2019-12-04T21:56:11.831</Modified>
+      <Modified>2019-12-05T13:52:39.731</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\GearView.xbf">
       <PackagePath>GearView.xbf</PackagePath>
-      <Modified>2019-12-04T21:56:11.831</Modified>
+      <Modified>2019-12-05T13:52:39.731</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\HomeView.xbf">
       <PackagePath>HomeView.xbf</PackagePath>
-      <Modified>2019-12-04T21:56:11.831</Modified>
+      <Modified>2019-12-05T13:52:39.731</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\LoaningsView.xbf">
       <PackagePath>LoaningsView.xbf</PackagePath>
-      <Modified>2019-12-04T21:56:11.831</Modified>
+      <Modified>2019-12-05T13:52:39.732</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2019-12-04T21:56:11.831</Modified>
+      <Modified>2019-12-05T13:52:39.732</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\MemberInfoView.xbf">
       <PackagePath>MemberInfoView.xbf</PackagePath>
-      <Modified>2019-12-04T21:56:11.831</Modified>
+      <Modified>2019-12-05T13:52:39.733</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\MembersView.xbf">
       <PackagePath>MembersView.xbf</PackagePath>
-      <Modified>2019-12-04T21:56:11.831</Modified>
+      <Modified>2019-12-05T13:52:39.733</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\Themes\BlueTheme.xbf">
+      <PackagePath>Themes\BlueTheme.xbf</PackagePath>
+      <Modified>2019-12-05T13:52:39.729</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\Themes\DarkTheme.xbf">
+      <PackagePath>Themes\DarkTheme.xbf</PackagePath>
+      <Modified>2019-12-05T13:52:39.730</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\Themes\LightTheme.xbf">
+      <PackagePath>Themes\LightTheme.xbf</PackagePath>
+      <Modified>2019-12-05T13:52:39.730</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17763.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -906,11 +918,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2019-12-04T21:56:12.769</Modified>
+      <Modified>2019-12-05T13:52:40.792</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\Core\ClimbingClub.exe">
       <PackagePath>ClimbingClub.exe</PackagePath>
-      <Modified>2019-12-04T22:06:00.221</Modified>
+      <Modified>2019-12-05T13:52:41.291</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

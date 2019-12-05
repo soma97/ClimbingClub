@@ -33,14 +33,7 @@ namespace ClimbingClub
         public MainPage()
         {
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-            if ((localSettings.Values["theme"] as string).Equals("blue"))
-            {
-                this.Style = (Style)Application.Current.Resources["BlueTheme"];
-            }
-            else if((localSettings.Values["theme"] as string).Equals("light"))
-            {
-                this.Style = (Style)Application.Current.Resources["LightTheme"];
-            }
+           
             this.InitializeComponent();
             MainActiveFrame = ActiveFrame;
      

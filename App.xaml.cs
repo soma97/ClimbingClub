@@ -40,11 +40,12 @@ namespace ClimbingClub
             {
                 this.RequestedTheme = ApplicationTheme.Dark;
             }
-            else if((localSettings.Values["theme"] as string).Equals("light"))
+            else
             {
                 this.RequestedTheme = ApplicationTheme.Light;
             }
             this.InitializeComponent();
+            
             this.Suspending += OnSuspending;
             using (var db=new ApplicationDbContext())
             {
@@ -60,6 +61,22 @@ namespace ClimbingClub
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
             Frame rootFrame = Window.Current.Content as Frame;
+
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+           
+            if((localSettings.Values["theme"] as string).Equals("light"))
+            {
+                Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("ms-resource:///Files/Themes/LightTheme.xaml") });
+            }
+            else if((localSettings.Values["theme"] as string).Equals("blue"))
+            {
+                Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("ms-resource:///Files/Themes/BlueTheme.xaml") });
+            }
+            else
+            {
+                Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("ms-resource:///Files/Themes/DarkTheme.xaml") });
+            }
+
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active

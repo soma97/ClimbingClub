@@ -62,4 +62,7 @@ LoaningsView.xbf
 MainPage.xbf
 MemberInfoView.xbf
 MembersView.xbf
+Themes\BlueTheme.xbf
+Themes\DarkTheme.xbf
+Themes\LightTheme.xbf
 Properties\Default.rd.xml

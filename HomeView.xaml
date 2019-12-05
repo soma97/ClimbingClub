@@ -5,7 +5,8 @@
     xmlns:local="using:ClimbingClub"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Style="{ThemeResource ResourceKey=PageStyle}">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -18,12 +19,12 @@
             <StackPanel.Background>
                 <ImageBrush ImageSource="/Assets/sport-muscles-climbing-climber-9606.jpg" Opacity="0.3"/>
             </StackPanel.Background>
-            <TextBlock Text="Enter username" Margin="50,10,0,0"></TextBlock>
-            <TextBox x:Name="UsernameBox" HorizontalAlignment="Left" Width="150" Margin="50,10,0,0"></TextBox>
-            <TextBlock Text="Enter password" Margin="50,10,0,0"></TextBlock>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Text="Enter username" Margin="50,10,0,0"></TextBlock>
+            <TextBox Style="{ThemeResource ResourceKey=TextBoxStyle}" x:Name="UsernameBox" HorizontalAlignment="Left" Width="150" Margin="50,10,0,0"></TextBox>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Text="Enter password" Margin="50,10,0,0"></TextBlock>
             <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Width="150" Margin="50,10,0,0"></PasswordBox>
-            <Button x:Name="LoginButton" Content="Login" Width="150" HorizontalAlignment="Left" Margin="50,10,0,0" Click="LoginButton_Click"/>
-            <Button x:Name="AddUserButton" Visibility="Collapsed" Content="Add user" Width="150" HorizontalAlignment="Left" Margin="50,100,0,0" Click="AddUserButton_Click"/>
+            <Button Style="{ThemeResource ResourceKey=ButtonStyle}" x:Name="LoginButton" Content="Login" Width="150" HorizontalAlignment="Left" Margin="50,10,0,0" Click="LoginButton_Click"/>
+            <Button Style="{ThemeResource ResourceKey=ButtonStyle}" x:Name="AddUserButton" Visibility="Collapsed" Content="Add user" Width="150" HorizontalAlignment="Left" Margin="50,100,0,0" Click="AddUserButton_Click"/>
         </StackPanel>
 
     </Grid>
