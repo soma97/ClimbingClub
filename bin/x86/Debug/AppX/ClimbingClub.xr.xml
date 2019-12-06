@@ -94,6 +94,7 @@
       <RootProperty Name="Flyout" />
       <RootEvent Name="Click" />
     </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Data.Binding" />
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
       <RootProperty Name="Style" />
@@ -118,6 +119,7 @@
       <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="ClimbingClub.HomeView" />
+    <RootType FullName="System.String" />
     <RootType FullName="ClimbingClub.LoaningsView" />
     <RootType FullName="Windows.UI.Xaml.Controls.Pivot">
       <RootProperty Name="Items" />

@@ -36,7 +36,20 @@ namespace ClimbingClub
             {
                 localSettings.Values["theme"] = "dark";
             }
-            if((localSettings.Values["theme"] as string).Equals("dark"))
+            if (localSettings.Values["language"] == null)
+            {
+                localSettings.Values["language"] = "english";
+            }
+            if (localSettings.Values["monthly_fee"] == null)
+            {
+                localSettings.Values["monthly_fee"] = "35";
+            }
+            if (localSettings.Values["one_training_fee"] == null)
+            {
+                localSettings.Values["one_training_fee"] = "5";
+            }
+
+            if ((localSettings.Values["theme"] as string).Equals("dark"))
             {
                 this.RequestedTheme = ApplicationTheme.Dark;
             }
@@ -63,8 +76,8 @@ namespace ClimbingClub
             Frame rootFrame = Window.Current.Content as Frame;
 
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-           
-            if((localSettings.Values["theme"] as string).Equals("light"))
+
+            if ((localSettings.Values["theme"] as string).Equals("light"))
             {
                 Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("ms-resource:///Files/Themes/LightTheme.xaml") });
             }
@@ -75,6 +88,15 @@ namespace ClimbingClub
             else
             {
                 Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("ms-resource:///Files/Themes/DarkTheme.xaml") });
+            }
+
+            if ((localSettings.Values["language"] as string).Equals("english"))
+            {
+                Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("ms-resource:///Files/Languages/English.xaml") });
+            }
+            else
+            {
+                Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("ms-resource:///Files/Languages/Serbian.xaml") });
             }
 
 

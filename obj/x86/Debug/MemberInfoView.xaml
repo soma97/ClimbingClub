@@ -25,13 +25,13 @@
             <SymbolIcon Symbol="Back"/>
         </Button>
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Text="Training days" Margin="0,40,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Text="{StaticResource Training days}" Margin="0,40,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <CalendarView x:ConnectionId='14' x:Name="TrainingCalendar" VerticalAlignment="Center" HorizontalAlignment="Center" SelectionMode="Multiple"/>
         </StackPanel>
         <StackPanel Margin="50,0,0,0" VerticalAlignment="Bottom" Orientation="Horizontal" Grid.Row="0" Grid.Column="2" Height="20">
-            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="Date"/>
-            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="Price (KM)"/>
-            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="135" VerticalAlignment="Center" Text="Payment Type"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{StaticResource Date}"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{StaticResource Price (KM)}"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="135" VerticalAlignment="Center" Text="{StaticResource Payment Type}"/>
         </StackPanel>
         <ListView x:ConnectionId='4' Grid.Row="1" Grid.Column="2" x:Name="PaymentList" Style="{ThemeResource ResourceKey=ListViewStyle}" >
             <ListView.ItemTemplate>
@@ -41,13 +41,13 @@
                         <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="55,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding timeFormat}"/>
                         <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding Price}"/>
                         <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding isMonthlyFormat}"/>
-                        <Button x:ConnectionId='13' Style="{ThemeResource ResourceKey=ButtonStyle}" Margin="15,0,0,0" x:Name="DeleteButton" Content="Delete"                             />
+                        <Button x:ConnectionId='13' Style="{ThemeResource ResourceKey=ButtonStyle}" Margin="15,0,0,0" x:Name="DeleteButton" Content="{StaticResource Delete}"                             />
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Vertical" Style="{ThemeResource ResourceKey=StackPanelStyle}">
-            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Text="Unpaid trainings" Margin="3,3,0,10"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Text="{StaticResource Unpaid trainings}" Margin="3,3,0,10"/>
             <ListView x:ConnectionId='9' x:Name="DebtList" Height="180">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -60,10 +60,10 @@
             <TextBlock x:ConnectionId='10' Style="{ThemeResource ResourceKey=TextBlockStyle}" x:Name="DebtSum" FontSize="14" HorizontalAlignment="Left" Margin="3,5,0,0"/>
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1">
-            <Button x:ConnectionId='5' Style="{ThemeResource ResourceKey=ButtonStyle}" Width="130" x:Name="PaymentButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="Add payment"                            />
-            <Button x:ConnectionId='6' Style="{ThemeResource ResourceKey=ButtonStyle}" Width="130" x:Name="LoaningButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="Add loaning"                            />
-            <Button x:ConnectionId='7' Style="{ThemeResource ResourceKey=ButtonStyle}" Width="130" x:Name="ChangeButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="Edit member"                           />
-            <Button x:ConnectionId='8' Style="{ThemeResource ResourceKey=ButtonStyle}" Width="130" x:Name="DeleteButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="Delete member"                           />
+            <Button x:ConnectionId='5' Style="{ThemeResource ResourceKey=ButtonStyle}" Width="130" x:Name="PaymentButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="{StaticResource Add payment}"                            />
+            <Button x:ConnectionId='6' Style="{ThemeResource ResourceKey=ButtonStyle}" Width="130" x:Name="LoaningButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="{StaticResource Add loaning}"                            />
+            <Button x:ConnectionId='7' Style="{ThemeResource ResourceKey=ButtonStyle}" Width="130" x:Name="ChangeButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="{StaticResource Edit member}"                           />
+            <Button x:ConnectionId='8' Style="{ThemeResource ResourceKey=ButtonStyle}" Width="130" x:Name="DeleteButton" HorizontalAlignment="Center" Margin="0,20,0,0" Content="{StaticResource Delete member}"                           />
         </StackPanel>
     </Grid>
 </Page>

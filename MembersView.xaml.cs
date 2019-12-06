@@ -2,20 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 using Windows.UI.Popups;
-using Windows.UI;
 
 namespace ClimbingClub
 {
@@ -44,13 +35,13 @@ namespace ClimbingClub
         {
             if (NameBox.Text.Length < 1)
             {
-                NameBox.Text = "Enter name";
+                NameBox.Text = (Application.Current.Resources["Enter personal name"] as string);
             }
         }
 
         private void NameBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (NameBox.Text.Equals("Enter name"))
+            if (NameBox.Text.Equals((Application.Current.Resources["Enter personal name"] as string)))
             {
                 NameBox.Text = "";
             }
@@ -58,7 +49,7 @@ namespace ClimbingClub
 
         private void SurnameBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (SurnameBox.Text.Equals("Enter surname"))
+            if (SurnameBox.Text.Equals((Application.Current.Resources["Enter surname"] as string)))
             {
                 SurnameBox.Text = "";
             }
@@ -68,15 +59,15 @@ namespace ClimbingClub
         {
             if (SurnameBox.Text.Length < 1)
             {
-                SurnameBox.Text = "Enter surname";
+                SurnameBox.Text = (Application.Current.Resources["Enter surname"] as string);
             }
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            if (NameBox.Text.Length < 1 || SurnameBox.Text.Length < 1 || NameBox.Text.Equals("Enter name") || SurnameBox.Text.Equals("Enter surname"))
+            if (NameBox.Text.Length < 1 || SurnameBox.Text.Length < 1 || NameBox.Text.Equals((Application.Current.Resources["Enter personal name"] as string)) || SurnameBox.Text.Equals((Application.Current.Resources["Enter surname"] as string)))
             {
-                MessageDialog messageDialog = new MessageDialog("Please set all fields and try again.", "Error");
+                MessageDialog messageDialog = new MessageDialog((Application.Current.Resources["Please set all fields and try again."] as string), (Application.Current.Resources["Error"] as string));
                 messageDialog.ShowAsync();
                 return;
             }
@@ -99,13 +90,13 @@ namespace ClimbingClub
                     catch(Exception ex)
                     {
                         trx.Rollback();
-                        MessageDialog messageDialog = new MessageDialog("Invalid member data", "Error");
+                        MessageDialog messageDialog = new MessageDialog((Application.Current.Resources["Invalid member data."] as string), (Application.Current.Resources["Error"] as string));
                         messageDialog.ShowAsync();
                     }
                 }
             }
-            NameBox.Text = "Enter name";
-            SurnameBox.Text = "Enter surname";
+            NameBox.Text = (Application.Current.Resources["Enter personal name"] as string);
+            SurnameBox.Text = (Application.Current.Resources["Enter surname"] as string);
             RefreshMembersList();
         }
 
@@ -171,7 +162,7 @@ namespace ClimbingClub
 
         private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (SearchBox.Text.Equals("Search by surname"))
+            if (SearchBox.Text.Equals((Application.Current.Resources["Search by surname"] as string)))
             {
                 SearchBox.Text = "";
             }
@@ -181,7 +172,7 @@ namespace ClimbingClub
         {
             if (SearchBox.Text.Length < 1)
             {
-                SearchBox.Text = "Search by surname";
+                SearchBox.Text = (Application.Current.Resources["Search by surname"] as string);
             }
         }
 
@@ -198,7 +189,7 @@ namespace ClimbingClub
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(SearchBox.Text.Equals("Search by surname"))
+            if(SearchBox.Text.Equals((Application.Current.Resources["Search by surname"] as string)))
             {
                 return;
             }

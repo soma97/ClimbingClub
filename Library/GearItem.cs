@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 
 namespace ClimbingClub.Library
 {
@@ -39,7 +40,7 @@ namespace ClimbingClub.Library
         [NotMapped]
         public string Loan { get
             {
-                string result = "Available";
+                string result = (Application.Current.Resources["Available"] as string);
                 using(var db=new ApplicationDbContext())
                 {
                     bool isAvailable = true;

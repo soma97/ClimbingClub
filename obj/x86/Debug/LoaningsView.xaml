@@ -20,17 +20,17 @@
             <RowDefinition Height="117*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="3" Style="{ThemeResource ResourceKey=StackPanelStyle}">
-            <TextBox x:ConnectionId='7' Style="{ThemeResource ResourceKey=TextBoxStyle}" x:Name="SearchBox" VerticalAlignment="Center" Text="Search by loaner surname" Margin="10,0,0,0"                                                                                                  />
+            <TextBox x:ConnectionId='7' Style="{ThemeResource ResourceKey=TextBoxStyle}" x:Name="SearchBox" VerticalAlignment="Center" Text="{StaticResource Search by loaner surname}" Margin="10,0,0,0"                                                                                                  />
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Grid.Row="1" Grid.ColumnSpan="3">
-            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="30" VerticalAlignment="Center" Text="Id"/>
-            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="Name"/>
-            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="User"/>
-            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="80" VerticalAlignment="Center" Text="Loan date"/>
-            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="130" VerticalAlignment="Center" Text="Expected return date"/>
-            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="110" VerticalAlignment="Center" Text="Return date"/>
-            <TextBlock Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="Loaner name"/>
-            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="120" VerticalAlignment="Center" Text="Loaner surname"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="30" VerticalAlignment="Center" Text="{StaticResource Id}"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{StaticResource Name}"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{StaticResource User}"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="70" VerticalAlignment="Center" Text="{StaticResource Loan date}"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="130" VerticalAlignment="Center" Text="{StaticResource Expected return date}"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="110" VerticalAlignment="Center" Text="{StaticResource Return date}"/>
+            <TextBlock Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{StaticResource Loaner name}"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="120" VerticalAlignment="Center" Text="{StaticResource Loaner surname}"/>
         </StackPanel>
         <ListView x:ConnectionId='2' Grid.Row="2" Grid.ColumnSpan="3" x:Name="LoaningList">
             <ListView.ItemTemplate>
@@ -39,14 +39,14 @@
                         <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="30" VerticalAlignment="Center" Text="{Binding Id}"/>
                         <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding Name}"/>
                         <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding user.Username}"/>
-                        <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="80" VerticalAlignment="Center" Text="{Binding loanDateGet}"/>
+                        <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="70" VerticalAlignment="Center" Text="{Binding loanDateGet}"/>
                         <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="130" VerticalAlignment="Center" Text="{Binding expectedReturnDateGet}"/>
                         <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="110" VerticalAlignment="Center" Text="{Binding returnDateGet}"/>
                         <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding Member.Name}"/>
                         <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="120" VerticalAlignment="Center" Text="{Binding Member.Surname}"/>
-                        <Button x:ConnectionId='4' Style="{ThemeResource ResourceKey=ButtonStyle}" x:Name="DescriptionButton" Margin="20,0,0,0" Content="Description"                                />
-                        <Button x:ConnectionId='5' Style="{ThemeResource ResourceKey=ButtonStyle}" x:Name="ReturnButton" Margin="15,0,0,0" Content="Return"                           />
-                        <Button x:ConnectionId='6' Style="{ThemeResource ResourceKey=ButtonStyle}" x:Name="DeleteButton" Margin="15,0,0,0" Content="Delete"                           />
+                        <Button x:ConnectionId='4' Style="{ThemeResource ResourceKey=ButtonStyle}" x:Name="DescriptionButton" Margin="20,0,0,0" Content="{StaticResource Description}"                                />
+                        <Button x:ConnectionId='5' Style="{ThemeResource ResourceKey=ButtonStyle}" x:Name="ReturnButton" Margin="15,0,0,0" Content="{StaticResource Return}"                           />
+                        <Button x:ConnectionId='6' Style="{ThemeResource ResourceKey=ButtonStyle}" x:Name="DeleteButton" Margin="15,0,0,0" Content="{StaticResource Delete}"                           />
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

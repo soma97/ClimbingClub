@@ -1,20 +1,8 @@
 ﻿using ClimbingClub.Library;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using Microsoft.EntityFrameworkCore;
-using Windows.Globalization;
 using Windows.Storage;
 using Windows.UI.Popups;
 using System.Security.Cryptography;
@@ -32,19 +20,8 @@ namespace ClimbingClub
         public static bool isAdmin = false;
         public MainPage()
         {
-            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-           
             this.InitializeComponent();
             MainActiveFrame = ActiveFrame;
-     
-            if (localSettings.Values["monthly_fee"]==null)
-            {
-                localSettings.Values["monthly_fee"] = "35";
-            }
-            if (localSettings.Values["one_training_fee"] == null)
-            {
-                localSettings.Values["one_training_fee"] = "5";
-            }
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -55,6 +32,28 @@ namespace ClimbingClub
                     db.Users.Add(new User() { Username="admin",Password=GetHash("admin"),isAdmin=true});
                     db.SaveChanges();
                 }
+            }
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+            if(localSettings.Values["language"].Equals("english"))
+            {
+                EnglishOption.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                SerbianOption.Visibility = Visibility.Collapsed;
+            }
+
+            if (localSettings.Values["theme"].Equals("dark"))
+            {
+                DarkThemeOption.Visibility = Visibility.Collapsed;
+            }
+            else if(localSettings.Values["theme"].Equals("light"))
+            {
+                LightThemeOption.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                BlueThemeOption.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -70,7 +69,7 @@ namespace ClimbingClub
         {
             if (user == null && PivotTab.SelectedIndex != 0)
             {
-                MessageDialog dialog = new MessageDialog("You must login first.", "Error");
+                MessageDialog dialog = new MessageDialog((Application.Current.Resources["You must login first."] as string), (Application.Current.Resources["Error"] as string));
                 dialog.ShowAsync();
                 return;
             }
@@ -96,22 +95,22 @@ namespace ClimbingClub
         {
             if (user == null)
             {
-                MessageDialog dialog = new MessageDialog("You must login first.", "Error");
+                MessageDialog dialog = new MessageDialog((Application.Current.Resources["You must login first."] as string), (Application.Current.Resources["Error"] as string));
                 dialog.ShowAsync();
                 return;
             }
             if(isAdmin==false)
             {
-                MessageDialog dialog = new MessageDialog("You need admin privileges to change fees.", "Error");
+                MessageDialog dialog = new MessageDialog((Application.Current.Resources["You need admin privileges to change fees."] as string), (Application.Current.Resources["Error"] as string));
                 dialog.ShowAsync();
                 return;
             }
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
 
-            TextBlock monthlyBlock = new TextBlock() { Text = "Enter monthly fee",
+            TextBlock monthlyBlock = new TextBlock() { Text = (Application.Current.Resources["Enter monthly fee"] as string),
                 Margin=new Thickness(0,10,0,0)
             };
-            TextBlock oneTrainingBlock = new TextBlock() { Text = "Enter one training fee",
+            TextBlock oneTrainingBlock = new TextBlock() { Text = (Application.Current.Resources["Enter one training fee"] as string),
                 Margin = new Thickness(0, 10, 0, 0)
             };
             TextBox textBoxMonthly = new TextBox()
@@ -134,10 +133,10 @@ namespace ClimbingClub
 
             ContentDialog feesDialog = new ContentDialog()
             {
-                Title = "Change fees",
+                Title = (Application.Current.Resources["Change fees"] as string),
                 Content = content,
-                PrimaryButtonText = "Confirm",
-                SecondaryButtonText = "Cancel",
+                PrimaryButtonText = (Application.Current.Resources["Confirm"] as string),
+                SecondaryButtonText = (Application.Current.Resources["Cancel"] as string),
                 IsSecondaryButtonEnabled = true
             };
             if (await feesDialog.ShowAsync() == ContentDialogResult.Primary)
@@ -151,7 +150,7 @@ namespace ClimbingClub
                 }
                 catch(Exception ex)
                 {
-                    MessageDialog dialog = new MessageDialog("Value not set. Please enter a number.", "Error");
+                    MessageDialog dialog = new MessageDialog((Application.Current.Resources["Value not set. Please enter a number."] as string), (Application.Current.Resources["Error"] as string));
                     dialog.ShowAsync();
                 }
             }
@@ -161,7 +160,7 @@ namespace ClimbingClub
         {
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
             localSettings.Values["theme"] = "dark";
-            MessageDialog dialog = new MessageDialog("Please restart app to make changes.", "Notification");
+            MessageDialog dialog = new MessageDialog((Application.Current.Resources["Please restart app to make changes."] as string), (Application.Current.Resources["Notification"] as string));
             dialog.ShowAsync();
         }
 
@@ -169,7 +168,7 @@ namespace ClimbingClub
         {
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
             localSettings.Values["theme"] = "light";
-            MessageDialog dialog = new MessageDialog("Please restart app to make changes.", "Notification");
+            MessageDialog dialog = new MessageDialog((Application.Current.Resources["Please restart app to make changes."] as string), (Application.Current.Resources["Notification"] as string));
             dialog.ShowAsync();
         }
 
@@ -177,7 +176,7 @@ namespace ClimbingClub
         {
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
             localSettings.Values["theme"] = "blue";
-            MessageDialog dialog = new MessageDialog("Please restart app to make changes.", "Notification");
+            MessageDialog dialog = new MessageDialog((Application.Current.Resources["Please restart app to make changes."] as string), (Application.Current.Resources["Notification"] as string));
             dialog.ShowAsync();
         }
 
@@ -187,6 +186,22 @@ namespace ClimbingClub
             isAdmin = false;
             PivotTab.SelectedIndex = 0;
             ActiveFrame.Navigate(typeof(HomeView));
+        }
+
+        private void SerbianOption_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+            localSettings.Values["language"] = "serbian";
+            MessageDialog dialog = new MessageDialog((Application.Current.Resources["Please restart app to make changes."] as string), (Application.Current.Resources["Notification"] as string));
+            dialog.ShowAsync();
+        }
+
+        private void EnglishOption_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+            localSettings.Values["language"] = "english";
+            MessageDialog dialog = new MessageDialog((Application.Current.Resources["Please restart app to make changes."] as string), (Application.Current.Resources["Notification"] as string));
+            dialog.ShowAsync();
         }
     }
 }

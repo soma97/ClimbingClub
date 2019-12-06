@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 
 namespace ClimbingClub.Library
 {
@@ -21,6 +22,6 @@ namespace ClimbingClub.Library
         [NotMapped]
         public string timeFormat { get { return IsMonthly ? Payment.ToString("MMM") + "," + Payment.Year : Payment.Day + "." + Payment.Month + "." + Payment.Year; } }
         [NotMapped]
-        public string isMonthlyFormat { get { return IsMonthly ? "Monthly fee" : "One training fee"; } }
+        public string isMonthlyFormat { get { return IsMonthly ? (Application.Current.Resources["Monthly fee"] as string) : (Application.Current.Resources["One training fee"] as string); } }
     }
 }

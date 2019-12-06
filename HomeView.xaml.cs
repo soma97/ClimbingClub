@@ -1,21 +1,12 @@
 ﻿using ClimbingClub.Library;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography;
 using System.Text;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 namespace ClimbingClub
@@ -68,7 +59,7 @@ namespace ClimbingClub
                 }
                 else
                 {
-                    MessageDialog messageDialog = new MessageDialog("Invalid username or password.", "Error");
+                    MessageDialog messageDialog = new MessageDialog((Application.Current.Resources["Invalid username or password."] as string), (Application.Current.Resources["Error"] as string));
                     messageDialog.ShowAsync();
                 }
             }
@@ -76,11 +67,11 @@ namespace ClimbingClub
 
         private async void AddUserButton_Click(object sender, RoutedEventArgs e)
         {
-            TextBlock usernameBlock = new TextBlock() { Text = "Enter username", Margin = new Thickness(0, 10, 0, 0) };
-            TextBlock passwordBlock = new TextBlock() { Text = "Enter password", Margin = new Thickness(0, 10, 0, 0) };
+            TextBlock usernameBlock = new TextBlock() { Text = (Application.Current.Resources["Enter username"] as string), Margin = new Thickness(0, 10, 0, 0) };
+            TextBlock passwordBlock = new TextBlock() { Text = (Application.Current.Resources["Enter password"] as string), Margin = new Thickness(0, 10, 0, 0) };
             TextBox usernameBox = new TextBox() { Margin = new Thickness(0, 10, 0, 0) };
             PasswordBox passwordBox = new PasswordBox() { Margin = new Thickness(0, 10, 0, 0) };
-            CheckBox adminCheck = new CheckBox() { Content = "Admin", Margin = new Thickness(0, 10, 0, 0) };
+            CheckBox adminCheck = new CheckBox() { Content = (Application.Current.Resources["Admin"] as string), Margin = new Thickness(0, 10, 0, 0) };
             StackPanel content = new StackPanel() { Orientation = Orientation.Vertical };
             content.Children.Add(usernameBlock);
             content.Children.Add(usernameBox);
@@ -90,17 +81,17 @@ namespace ClimbingClub
 
             ContentDialog userDialog = new ContentDialog()
             {
-                Title = "Add user",
+                Title = (Application.Current.Resources["Add user"] as string),
                 Content = content,
-                PrimaryButtonText = "Confirm",
-                SecondaryButtonText = "Cancel",
+                PrimaryButtonText = (Application.Current.Resources["Confirm"] as string),
+                SecondaryButtonText = (Application.Current.Resources["Cancel"] as string),
                 IsSecondaryButtonEnabled = true
             };
             if (await userDialog.ShowAsync() == ContentDialogResult.Primary)
             {
                 if(usernameBox.Text.Length<1 || passwordBox.Password.Length < 1)
                 {
-                    MessageDialog messageDialog = new MessageDialog("Please set all fields and try again.", "Error");
+                    MessageDialog messageDialog = new MessageDialog((Application.Current.Resources["Please set all fields and try again."] as string), (Application.Current.Resources["Error"] as string));
                     messageDialog.ShowAsync();
                     return;
                 }
@@ -108,7 +99,7 @@ namespace ClimbingClub
                 {
                     if(db.Users.Where(u=>u.Username.Equals(usernameBox.Text)).Any())
                     {
-                        MessageDialog messageDialog = new MessageDialog("Username already exists.", "Error");
+                        MessageDialog messageDialog = new MessageDialog((Application.Current.Resources["Username already exists."] as string), (Application.Current.Resources["Error"] as string));
                         messageDialog.ShowAsync();
                         return;
                     }

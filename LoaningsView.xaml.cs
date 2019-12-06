@@ -2,18 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 namespace ClimbingClub
 {
@@ -52,7 +43,7 @@ namespace ClimbingClub
                 foreach (var x in db.GearLoanings.Where(gl=>gl.IdLoaning==id))
                 {
                     GearItem item = db.GearItems.Where(gi => gi.Id == x.IdGearItem).FirstOrDefault();
-                    listItems.Items.Add(item.Name + ", " + item.Description + ",  Count: "+x.CountLoaned);
+                    listItems.Items.Add(item.Name + ", " + item.Description + ",  "+(Application.Current.Resources["Count"] as string) + ": " + x.CountLoaned);
                 }
             }
             StackPanel content = new StackPanel() { Orientation = Orientation.Vertical };
@@ -62,7 +53,7 @@ namespace ClimbingClub
             };
             TextBlock itemsBlock = new TextBlock()
             {
-                Text = "Items:",
+                Text = (Application.Current.Resources["Items"] as string)+":",
                 Margin=new Thickness(0,10,0,0)
             };
      
@@ -71,7 +62,7 @@ namespace ClimbingClub
             content.Children.Add(listItems);
             ContentDialog descrDialog = new ContentDialog()
             {
-                Title = "Loaning description",
+                Title = (Application.Current.Resources["Loaning description"] as string),
                 Content = content,
                 PrimaryButtonText = "OK"
             };
@@ -104,7 +95,7 @@ namespace ClimbingClub
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-            if (SearchBox.Text.Equals("Search by loaner surname"))
+            if (SearchBox.Text.Equals((Application.Current.Resources["Search by loaner surname"] as string)))
             {
                 return;
             }
@@ -127,13 +118,13 @@ namespace ClimbingClub
         {
             if (SearchBox.Text.Length < 1)
             {
-                SearchBox.Text = "Search by loaner surname";
+                SearchBox.Text = (Application.Current.Resources["Search by loaner surname"] as string);
             }
         }
 
         private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (SearchBox.Text.Equals("Search by loaner surname"))
+            if (SearchBox.Text.Equals((Application.Current.Resources["Search by loaner surname"] as string)))
             {
                 SearchBox.Text = "";
             }

@@ -1,0 +1,110 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClimbingClub.Languages">
+
+    <x:String x:Key="Personal name">Ime</x:String>
+    <x:String x:Key="Enter personal name">Unesite ime</x:String>
+    <x:String x:Key="Available">Dostupno</x:String>
+    <x:String x:Key="Loaned">Posudjeno</x:String>
+    <x:String x:Key="overdue">isteklo</x:String>
+    <x:String x:Key="Monthly fee">Mjesecna clanarina</x:String>
+    <x:String x:Key="One training fee">Naknada po treningu</x:String>
+
+    <!-- GearView-->
+    <x:String x:Key="Search by name">Pretraga po nazivu</x:String>
+    <x:String x:Key="Enter name">Unesite naziv</x:String>
+    <x:String x:Key="Enter description">Unesite opis</x:String>
+    <x:String x:Key="Enter number of gear items">Unesite ukupan broj</x:String>
+    <x:String x:Key="Add gear item">Dodaj stavku opreme</x:String>
+    <x:String x:Key="Id">Id</x:String>
+    <x:String x:Key="Name">Naziv</x:String>
+    <x:String x:Key="Surname">Prezime</x:String>
+    <x:String x:Key="Description">Opis</x:String>
+    <x:String x:Key="Total Count">Ukupan broj</x:String>
+    <x:String x:Key="Loan status">Status posudbe</x:String>
+    <x:String x:Key="Delete">Izbrisi</x:String>
+    <x:String x:Key="Confirm">Potvrdi</x:String>
+    <x:String x:Key="Items available">Dostupne stavke:</x:String>
+    <x:String x:Key="Items loaned to:">Posudjeno clanovima:</x:String>
+
+    <x:String x:Key="Error">Greska</x:String>
+    <x:String x:Key="Please set all fields and try again.">Popunite sva polja i pokusajte ponovo.</x:String>
+    <x:String x:Key="Please set a positive number in number field.">Unesite pozitivan broj u polje za ukupan broj.</x:String>
+
+
+    <!-- HomeView-->
+    <x:String x:Key="Enter username">Unesite korisnicko ime</x:String>
+    <x:String x:Key="Enter password">Unesite lozinku</x:String>
+    <x:String x:Key="Login">Prijava</x:String>
+    <x:String x:Key="Add user">Dodaj korisnika</x:String>
+    <x:String x:Key="Invalid username or password.">Neispravno ime ili lozinka.</x:String>
+    <x:String x:Key="Admin">Admin</x:String>
+    <x:String x:Key="Cancel">Ponisti</x:String>
+    <x:String x:Key="Username already exists.">Korisnicko ime vec postoji.</x:String>
+
+    <!-- LoaningsView-->
+    <x:String x:Key="Search by loaner surname">Pretrazi po prezimenu</x:String>
+    <x:String x:Key="User">Korisnik</x:String>
+    <x:String x:Key="Loan date">Posudjeno</x:String>
+    <x:String x:Key="Expected return date">Predvidjeno vracanje</x:String>
+    <x:String x:Key="Return date">Datum vracanja</x:String>
+    <x:String x:Key="Loaner name">Ime</x:String>
+    <x:String x:Key="Loaner surname">Prezime</x:String>
+    <x:String x:Key="Return">Vrati</x:String>
+    <x:String x:Key="Count">Broj</x:String>
+    <x:String x:Key="Items">Stavke</x:String>
+    <x:String x:Key="Loaning description">Opis posudbe</x:String>
+
+    <!-- MainPage-->
+    <x:String x:Key="Home">Pocetna</x:String>
+    <x:String x:Key="Members">Clanovi</x:String>
+    <x:String x:Key="Loanings">Posudbe</x:String>
+    <x:String x:Key="Gear">Oprema</x:String>
+    <x:String x:Key="Change language">Promjeni jezik</x:String>
+    <x:String x:Key="Change theme">Promjeni temu</x:String>
+    <x:String x:Key="Dark theme">Tamna tema</x:String>
+    <x:String x:Key="Light theme">Svjetla tema</x:String>
+    <x:String x:Key="Blue theme">Plava tema</x:String>
+    <x:String x:Key="Change fees">Promjeni clanarinu</x:String>
+    <x:String x:Key="Logout">Odjava</x:String>
+    <x:String x:Key="You need admin privileges to change fees.">Potrebne su administratorske privilegije za ovu akciju.</x:String>
+    <x:String x:Key="Enter monthly fee">Unesi mjesecnu clanarinu</x:String>
+    <x:String x:Key="You must login first.">Prvo se morate prijaviti na sistem.</x:String>
+    <x:String x:Key="Enter one training fee">Unesi cijenu jednog treninga</x:String>
+    <x:String x:Key="Value not set. Please enter a number.">Vrijednost nije postavljena. Unesi broj.</x:String>
+    <x:String x:Key="Notification">Obavjestenje</x:String>
+    <x:String x:Key="Please restart app to make changes.">Restartujte aplikaciju da bi potvrdili promjene.</x:String>
+
+    <!-- MemberInfoView-->
+    <x:String x:Key="Training days">Dani dolaska na trening</x:String>
+    <x:String x:Key="Date">Datum</x:String>
+    <x:String x:Key="Price (KM)">Cijena (KM)</x:String>
+    <x:String x:Key="Payment Type">Tip placanja</x:String>
+    <x:String x:Key="Unpaid trainings">Neplaceni treninzi</x:String>
+    <x:String x:Key="Add payment">Dodaj uplatu</x:String>
+    <x:String x:Key="Add loaning">Dodaj posudbu</x:String>
+    <x:String x:Key="Edit member">Izmjeni clana</x:String>
+    <x:String x:Key="Delete member">Izbrisi clana</x:String>
+    <x:String x:Key="Member owns">Clan duguje</x:String>
+    <x:String x:Key="Select payment type">Izaberi tip placanja</x:String>
+    <x:String x:Key="Select date">Izaberi datum</x:String>
+    <x:String x:Key="You already paid that.">Vec ste platili ovaj period.</x:String>
+    <x:String x:Key="Something went wrong. Please try again.">Nesto nije u redu. Pokusajte ponovo.</x:String>
+    <x:String x:Key="Select items for loaning">Izaberite stavke za posudbu</x:String>
+    <x:String x:Key="Return date can't be set to date which is before today's date. Please try again.">Datum vracanja opreme ne moze biti prije danasnjeg datuma. Pokusajte ponovo.</x:String>
+    <x:String x:Key="Please set loaning name and try again.">Molim vas unesite ime posudbe i pokusajte ponovo.</x:String>
+    <x:String x:Key="Change member">Izmjeni clana</x:String>
+    <x:String x:Key="Delete member permanently?">Izbrisi clana?</x:String>
+    <x:String x:Key="If you delete this member, you won't be able to recover it. Do you want to delete it?">Ako izbrisete clana necete ga moci vratiti. Da li ste sigurni?</x:String>
+
+    <!-- MembersView-->
+    <x:String x:Key="Search by surname">Pretrazi po prezimenu</x:String>
+    <x:String x:Key="Enter surname">Unesite ime</x:String>
+    <x:String x:Key="Add member">Dodaj clana</x:String>
+    <x:String x:Key="Present today">Prisutan danas</x:String>
+    <x:String x:Key="Details">Detalji</x:String>
+    <x:String x:Key="Invalid member data.">Neispravni podaci o korisniku.</x:String>
+
+</ResourceDictionary>
+

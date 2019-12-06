@@ -20,18 +20,18 @@
             <RowDefinition Height="573*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Orientation="Horizontal" Style="{ThemeResource ResourceKey=StackPanelStyle}">
-            <TextBox x:ConnectionId='6' Style="{ThemeResource ResourceKey=TextBoxStyle}" x:Name="SearchBox" Text="Search by name" Margin="10,0,0,0" VerticalAlignment="Center"                                                                                                  />
-            <TextBox x:ConnectionId='7' Style="{ThemeResource ResourceKey=TextBoxStyle}" Margin="400,10,10,10" Text="Enter name" x:Name="NameBox" VerticalAlignment="Center"                                                          />
-            <TextBox x:ConnectionId='8' Style="{ThemeResource ResourceKey=TextBoxStyle}" Margin="10,10,10,10" Text="Enter description" x:Name="DescrBox" VerticalAlignment="Center"                                                            />
-            <TextBox x:ConnectionId='9' Style="{ThemeResource ResourceKey=TextBoxStyle}" Margin="10,10,10,10" Text="Enter number of gear items" x:Name="CountBox" VerticalAlignment="Center"                                                            />
-            <Button x:ConnectionId='10' Style="{ThemeResource ResourceKey=ButtonStyle}" x:Name="AddGearButton" Content="Add gear item" Margin="30,10,10,10"                            />
+            <TextBox x:ConnectionId='6' Style="{ThemeResource ResourceKey=TextBoxStyle}" x:Name="SearchBox" Text="{StaticResource Search by name}" Margin="10,0,0,0" VerticalAlignment="Center"                                                                                                  />
+            <TextBox x:ConnectionId='7' Style="{ThemeResource ResourceKey=TextBoxStyle}" Margin="400,10,10,10" Text="{StaticResource Enter name}" x:Name="NameBox" VerticalAlignment="Center"                                                          />
+            <TextBox x:ConnectionId='8' Style="{ThemeResource ResourceKey=TextBoxStyle}" Margin="10,10,10,10" Text="{StaticResource Enter description}" x:Name="DescrBox" VerticalAlignment="Center"                                                            />
+            <TextBox x:ConnectionId='9' Style="{ThemeResource ResourceKey=TextBoxStyle}" Margin="10,10,10,10" Text="{StaticResource Enter number of gear items}" x:Name="CountBox" VerticalAlignment="Center"                                                            />
+            <Button x:ConnectionId='10' Style="{ThemeResource ResourceKey=ButtonStyle}" x:Name="AddGearButton" Content="{StaticResource Add gear item}" Margin="30,10,10,10"                            />
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Grid.Row="1" Grid.ColumnSpan="3">
-            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Id"/>
-            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Name"/>
-            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="350" VerticalAlignment="Center" Text="Description"/>
-            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="Total Count"/>
-            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="200" VerticalAlignment="Center" Text="Loan status"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{StaticResource Id}"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{StaticResource Name}"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="350" VerticalAlignment="Center" Text="{StaticResource Description}"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{StaticResource Total Count}"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="200" VerticalAlignment="Center" Text="{StaticResource Loan status}"/>
         </StackPanel>
         <ListView x:ConnectionId='2' Grid.Row="3" Grid.ColumnSpan="3" x:Name="GearList">
             <ListView.ItemTemplate>
@@ -41,8 +41,8 @@
                         <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Name}"/>
                         <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="350" VerticalAlignment="Center" Text="{Binding Description}"/>
                         <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding CountAvailable}"/>
-                        <Button x:ConnectionId='4' Style="{ThemeResource ResourceKey=ButtonStyle}" Margin="15,0,0,0" VerticalAlignment="Center" x:Name="LoanStatusButton" Content="Loan status"                               />
-                        <Button x:ConnectionId='5' Style="{ThemeResource ResourceKey=ButtonStyle}" Margin="15,0,0,0" VerticalAlignment="Center" x:Name="DeleteButton" Content="Delete"                           />
+                        <Button x:ConnectionId='4' Style="{ThemeResource ResourceKey=ButtonStyle}" Margin="15,0,0,0" VerticalAlignment="Center" x:Name="LoanStatusButton" Content="{StaticResource Loan status}"                               />
+                        <Button x:ConnectionId='5' Style="{ThemeResource ResourceKey=ButtonStyle}" Margin="15,0,0,0" VerticalAlignment="Center" x:Name="DeleteButton" Content="{StaticResource Delete}"                           />
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

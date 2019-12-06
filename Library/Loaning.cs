@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 
 namespace ClimbingClub.Library
 {
@@ -24,10 +25,10 @@ namespace ClimbingClub.Library
             {
                 if (ReturnDate.Equals(DateTime.MinValue))
                 {
-                    string result = "Loaned";
+                    string result = (Application.Current.Resources["Loaned"] as string);
                     if (DateTime.Now.CompareTo(ExpectedReturnDate) > 0)
                     {
-                        result += "(overdue)";
+                        result += "("+ (Application.Current.Resources["overdue"] as string) + ")";
                     }
                     return result;
                 }

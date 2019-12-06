@@ -675,6 +675,12 @@
     <AppxPackagedFile Include="C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\HomeView.xbf">
       <PackagePath>HomeView.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\Languages\English.xbf">
+      <PackagePath>Languages\English.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\Languages\Serbian.xbf">
+      <PackagePath>Languages\Serbian.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\LoaningsView.xbf">
       <PackagePath>LoaningsView.xbf</PackagePath>
     </AppxPackagedFile>

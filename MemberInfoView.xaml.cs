@@ -73,7 +73,7 @@ namespace ClimbingClub
             DebtList.ItemsSource = debts = debts.OrderByDescending(tr=>tr.TrainingDate).ToList();
             if (debts.Count == 0)
             {
-                DebtSum.Text = "Member owns 0 KM";
+                DebtSum.Text = (Application.Current.Resources["Member owns"] as string)+" 0 KM";
                 return;
             }
             int lastYear = debts.First().TrainingDate.Year;
@@ -103,19 +103,19 @@ namespace ClimbingClub
                     }
                 }
             }
-            DebtSum.Text = "Member owns " +sum+ " KM";
+            DebtSum.Text = (Application.Current.Resources["Member owns"] as string) +" "+ sum+ " KM";
         }
 
         private async void PaymentButton_Click(object sender, RoutedEventArgs e)
         {
-            TextBlock paymentTypeBlock = new TextBlock() { Text = "Select payment type" };
+            TextBlock paymentTypeBlock = new TextBlock() { Text = (Application.Current.Resources["Select payment type"] as string) };
             TextBlock dateBlock = new TextBlock() { 
-                Text = "Select date",
+                Text = (Application.Current.Resources["Select date"] as string),
                 Margin = new Thickness(0, 10, 0, 0)
             };
             ComboBox paymentCombo = new ComboBox()
             {
-               ItemsSource=new List<string>() { "Monthly fee","One training fee"},
+               ItemsSource=new List<string>() { (Application.Current.Resources["Monthly fee"] as string), (Application.Current.Resources["One training fee"] as string) },
                SelectedIndex=0,
                Margin = new Thickness(0, 10, 0, 0)
             };
@@ -134,10 +134,10 @@ namespace ClimbingClub
 
             ContentDialog paymentDialog = new ContentDialog()
             {
-                Title = "Add payment",
+                Title = (Application.Current.Resources["Add payment"] as string),
                 Content = content,
-                PrimaryButtonText = "Confirm",
-                SecondaryButtonText = "Cancel",
+                PrimaryButtonText = (Application.Current.Resources["Confirm"] as string),
+                SecondaryButtonText = (Application.Current.Resources["Cancel"] as string),
                 IsSecondaryButtonEnabled = true
             };
             if (await paymentDialog.ShowAsync() == ContentDialogResult.Primary)
@@ -149,7 +149,7 @@ namespace ClimbingClub
                 catch (Exception ex)
                 {
                     System.Diagnostics.Debug.WriteLine(ex.StackTrace);
-                    MessageDialog dialog = new MessageDialog("Value not set. Please enter a number.", "Error");
+                    MessageDialog dialog = new MessageDialog((Application.Current.Resources["Value not set. Please enter a number."] as string), (Application.Current.Resources["Error"] as string));
                     dialog.ShowAsync();
                 }
             }
@@ -182,7 +182,7 @@ namespace ClimbingClub
                         fee.Payment.Date.Equals(dateToSet.Date)) || (fee.IsMonthly==true && 
                         fee.Payment.Month == dateToSet.Month && fee.Payment.Year == dateToSet.Year)))).Any())
                         {
-                            MessageDialog messageDialog = new MessageDialog("You already paid that.", "Error");
+                            MessageDialog messageDialog = new MessageDialog((Application.Current.Resources["You already paid that."] as string), (Application.Current.Resources["Error"] as string));
                             messageDialog.ShowAsync();
                         }
                         else
@@ -204,7 +204,7 @@ namespace ClimbingClub
             }
             catch(Exception ex)
             {
-                MessageDialog messageDialog = new MessageDialog("Something went wrong. Please try again.", "Error");
+                MessageDialog messageDialog = new MessageDialog((Application.Current.Resources["Something went wrong. Please try again."] as string), (Application.Current.Resources["Error"] as string));
                 messageDialog.ShowAsync();
             }
             RefreshDebt();
@@ -214,15 +214,15 @@ namespace ClimbingClub
         {
 
             StackPanel content = new StackPanel() { Orientation = Orientation.Vertical };
-            TextBlock nameBlock = new TextBlock() { Text = "Enter name",
+            TextBlock nameBlock = new TextBlock() { Text = (Application.Current.Resources["Enter name"] as string),
                 Margin = new Thickness(0, 10, 0, 0)
             };
             TextBox nameBox = new TextBox() { Margin = new Thickness(0, 10, 0, 0) };
-            TextBlock descrBlock = new TextBlock() { Text = "Enter description",
+            TextBlock descrBlock = new TextBlock() { Text = (Application.Current.Resources["Enter description"] as string),
                 Margin = new Thickness(0, 10, 0, 0)
             };
             TextBox descrBox = new TextBox() { Margin = new Thickness(0, 10, 0, 0) };
-            TextBlock expectedRetDate = new TextBlock() { Text = "Expected return date",
+            TextBlock expectedRetDate = new TextBlock() { Text = (Application.Current.Resources["Expected return date"] as string),
                 Margin=new Thickness(0,10,0,0)
             };
             DatePicker datePicker = new DatePicker()
@@ -232,7 +232,7 @@ namespace ClimbingClub
             };
             TextBlock selectItemsBlock = new TextBlock()
             {
-                Text = "Select items for loaning",
+                Text = (Application.Current.Resources["Select items for loaning"] as string),
                 Margin = new Thickness(0, 10, 0, 0)
             };
             ListView listGearItems = new ListView()
@@ -248,7 +248,7 @@ namespace ClimbingClub
                     {
                         StackPanel contentItem = new StackPanel() { Orientation = Orientation.Horizontal };
                         contentItem.Children.Add(new CheckBox() { Content = item.Id + ", " + item.Name + ", " + item.Description });
-                        contentItem.Children.Add(new ComboBox() { Text="Count:", ItemsSource=item.itemsNumber, SelectedIndex=0,Margin=new Thickness(10,0,0,0) });
+                        contentItem.Children.Add(new ComboBox() { Text= (Application.Current.Resources["Count"] as string), ItemsSource=item.itemsNumber, SelectedIndex=0,Margin=new Thickness(10,0,0,0) });
                         listGearItems.Items.Add(contentItem);
                     }
                 }
@@ -264,24 +264,24 @@ namespace ClimbingClub
             
             ContentDialog loaningDialog = new ContentDialog()
             {
-                Title = "Add loaning",
+                Title = (Application.Current.Resources["Add loaning"] as string),
                 Content = content,
-                PrimaryButtonText = "Confirm",
-                SecondaryButtonText = "Cancel",
+                PrimaryButtonText = (Application.Current.Resources["Confirm"] as string),
+                SecondaryButtonText = (Application.Current.Resources["Cancel"] as string),
                 IsSecondaryButtonEnabled = true
             };
             if (await loaningDialog.ShowAsync() == ContentDialogResult.Primary)
             {
                 if(datePicker.Date.Date.CompareTo(DateTime.Now.Date)<0)
                 {
-                    MessageDialog messageDialog = new MessageDialog("Return date can't be set to date which is before today's date. Please try again.", "Error");
+                    MessageDialog messageDialog = new MessageDialog((Application.Current.Resources["Return date can't be set to date which is before today's date. Please try again."] as string), (Application.Current.Resources["Error"] as string));
                     messageDialog.ShowAsync();
                     return;
                 }
 
                 if (nameBox.Text.Length<1)
                 {
-                    MessageDialog messageDialog = new MessageDialog("Please set loaning name and try again.", "Error");
+                    MessageDialog messageDialog = new MessageDialog((Application.Current.Resources["Please set loaning name and try again."] as string), (Application.Current.Resources["Error"] as string));
                     messageDialog.ShowAsync();
                     return;
                 }
@@ -350,12 +350,12 @@ namespace ClimbingClub
         {
             TextBlock nameBlock = new TextBlock()
             {
-                Text="Name:",
+                Text= (Application.Current.Resources["Personal name"] as string)+":",
                 Margin=new Thickness(0,10,0,0)
             };
             TextBlock surnameBlock = new TextBlock()
             {
-                Text = "Surname:",
+                Text = (Application.Current.Resources["Surname"] as string)+":",
                 Margin = new Thickness(0,10, 0, 0)
             };
             TextBox nameBox = new TextBox() {
@@ -372,10 +372,10 @@ namespace ClimbingClub
 
             ContentDialog paymentDialog = new ContentDialog()
             {
-                Title = "Change member",
+                Title = (Application.Current.Resources["Change member"] as string),
                 Content = content,
-                PrimaryButtonText = "Confirm",
-                SecondaryButtonText = "Cancel",
+                PrimaryButtonText = (Application.Current.Resources["Confirm"] as string),
+                SecondaryButtonText = (Application.Current.Resources["Cancel"] as string),
                 IsSecondaryButtonEnabled = true
             };
             Member member = null;
@@ -389,7 +389,7 @@ namespace ClimbingClub
             {
                 if(nameBox.Text.Length<1 || surnameBox.Text.Length<1)
                 {
-                    MessageDialog messageDialog = new MessageDialog("Please set all fields and try again.", "Error");
+                    MessageDialog messageDialog = new MessageDialog((Application.Current.Resources["Please set all fields and try again."] as string), (Application.Current.Resources["Error"] as string));
                     messageDialog.ShowAsync();
                     return;
                 }
@@ -412,10 +412,10 @@ namespace ClimbingClub
         {
             ContentDialog deleteDialog = new ContentDialog
             {
-                Title = "Delete member permanently?",
-                Content = "If you delete this member, you won't be able to recover it. Do you want to delete it?",
-                PrimaryButtonText = "Delete",
-                CloseButtonText = "Cancel"
+                Title = (Application.Current.Resources["Delete member permanently?"] as string),
+                Content = (Application.Current.Resources["If you delete this member, you won't be able to recover it. Do you want to delete it?"] as string),
+                PrimaryButtonText = (Application.Current.Resources["Delete"] as string),
+                CloseButtonText = (Application.Current.Resources["Cancel"] as string)
             };
 
             if (await deleteDialog.ShowAsync() == ContentDialogResult.Primary)
@@ -433,14 +433,13 @@ namespace ClimbingClub
                 }
             }
         }
-
-        private void DeleteButton_Click_1(object sender, RoutedEventArgs e)
+        private void DeletePayment_Click(object sender, RoutedEventArgs e)
         {
             StackPanel realSender = (StackPanel)((Button)sender).Parent;
             int id = Int32.Parse(((TextBlock)realSender.Children[0]).Text);
-            using (var db=new ApplicationDbContext())
+            using (var db = new ApplicationDbContext())
             {
-                using(var trx=db.Database.BeginTransaction())
+                using (var trx = db.Database.BeginTransaction())
                 {
                     MembershipFee feeToDelete = db.MembershipFees.Where(mf => mf.Id == id).FirstOrDefault();
                     db.MembershipFees.Remove(feeToDelete);

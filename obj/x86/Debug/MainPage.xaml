@@ -19,27 +19,27 @@
             <ColumnDefinition Width="341*"/>
         </Grid.ColumnDefinitions>
         <Pivot x:ConnectionId='2' x:Name="PivotTab" Grid.Row="0" Grid.Column="0"                                              >
-            <PivotItem Style="{ThemeResource ResourceKey=PivotStyle}" Header="Home" TabIndex="0"/>
-            <PivotItem Style="{ThemeResource ResourceKey=PivotStyle}" Header="Members" TabIndex="1"/>
-            <PivotItem Style="{ThemeResource ResourceKey=PivotStyle}" Header="Loanings" TabIndex="2"/>
-            <PivotItem Style="{ThemeResource ResourceKey=PivotStyle}" Header="Gear" TabIndex="3"/>
+            <PivotItem Style="{ThemeResource ResourceKey=PivotStyle}" Header="{StaticResource Home}" TabIndex="0"/>
+            <PivotItem Style="{ThemeResource ResourceKey=PivotStyle}" Header="{StaticResource Members}" TabIndex="1"/>
+            <PivotItem Style="{ThemeResource ResourceKey=PivotStyle}" Header="{StaticResource Loanings}" TabIndex="2"/>
+            <PivotItem Style="{ThemeResource ResourceKey=PivotStyle}" Header="{StaticResource Gear}" TabIndex="3"/>
         </Pivot>
         <StackPanel Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Margin="0,0,0,0" Orientation="Horizontal">
             <Button VerticalAlignment="Top" HorizontalAlignment="Right" Height="50" Width="50">
                 <SymbolIcon Symbol="Setting"></SymbolIcon>
                 <Button.Flyout>
                     <MenuFlyout>
-                        <MenuFlyoutSubItem Text="Change language">
-                            <MenuFlyoutItem Text="Srpski"/>
-                            <MenuFlyoutItem Text="English"/>
+                        <MenuFlyoutSubItem Text="{StaticResource Change language}">
+                            <MenuFlyoutItem x:ConnectionId='9' x:Name="SerbianOption" Text="Srpski"                            />
+                            <MenuFlyoutItem x:ConnectionId='10' x:Name="EnglishOption" Text="English"                            />
                         </MenuFlyoutSubItem>
-                        <MenuFlyoutSubItem Text="Change theme">
-                            <MenuFlyoutItem x:ConnectionId='6' x:Name="DarkThemeOption" Text="Dark theme"                              />
-                            <MenuFlyoutItem x:ConnectionId='7' x:Name="LightThemeOption" Text="Light theme"                               />
-                            <MenuFlyoutItem x:ConnectionId='8' x:Name="BlueThemeOption" Text="Blue theme"                              />
+                        <MenuFlyoutSubItem Text="{StaticResource Change theme}">
+                            <MenuFlyoutItem x:ConnectionId='6' x:Name="DarkThemeOption" Text="{StaticResource Dark theme}"                              />
+                            <MenuFlyoutItem x:ConnectionId='7' x:Name="LightThemeOption" Text="{StaticResource Light theme}"                               />
+                            <MenuFlyoutItem x:ConnectionId='8' x:Name="BlueThemeOption" Text="{StaticResource Blue theme}"                              />
                         </MenuFlyoutSubItem>
-                        <MenuFlyoutItem x:ConnectionId='4' x:Name="ChangeFees" Text="Change fees"                         />
-                        <MenuFlyoutItem x:ConnectionId='5' x:Name="LogOut" Text="Log out"                     />
+                        <MenuFlyoutItem x:ConnectionId='4' x:Name="ChangeFees" Text="{StaticResource Change fees}"                         />
+                        <MenuFlyoutItem x:ConnectionId='5' x:Name="LogOut" Text="{StaticResource Logout}"                     />
                     </MenuFlyout>
                 </Button.Flyout>
             </Button>

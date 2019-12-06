@@ -289,3 +289,9 @@ C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\De
 C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\Themes\DarkTheme.xbf
 C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\Debug\Themes\DarkTheme.xaml
 C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\Debug\Themes\DarkTheme.xbf
+C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\Languages\English.xbf
+C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\bin\x86\Debug\Languages\Serbian.xbf
+C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\Debug\Languages\English.xaml
+C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\Debug\Languages\Serbian.xaml
+C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\Debug\Languages\English.xbf
+C:\Users\milos\Documents\Visual Studio 2017\source\repos\ClimbingClub\obj\x86\Debug\Languages\Serbian.xbf

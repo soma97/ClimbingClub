@@ -15,8 +15,12 @@
     <Style x:Key="PivotStyle" TargetType="PivotItem">
     </Style>
     <Style x:Key="StackPanelStyle" TargetType="StackPanel">
+        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="BorderThickness" Value="1"/>
     </Style>
     <Style x:Key="ListViewStyle" TargetType="ListView">
+        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="BorderThickness" Value="1"/>
     </Style>
 </ResourceDictionary>
 

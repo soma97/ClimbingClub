@@ -18,10 +18,10 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Style="{ThemeResource ResourceKey=StackPanelStyle}">
-            <TextBox Style="{ThemeResource ResourceKey=TextBoxStyle}" x:Name="SearchBox" VerticalContentAlignment="Center" Text="Search by surname" Margin="10,10,10,10" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus" TextChanged="SearchBox_TextChanged"/>
-            <TextBox Style="{ThemeResource ResourceKey=TextBoxStyle}" x:Name="NameBox" VerticalContentAlignment="Center" Text="Enter name" Margin="350,10,10,10" LostFocus="NameBox_LostFocus" GotFocus="NameBox_GotFocus"></TextBox>
-            <TextBox Style="{ThemeResource ResourceKey=TextBoxStyle}" x:Name="SurnameBox" VerticalContentAlignment="Center" Text="Enter surname" Margin="10,10,10,10" GotFocus="SurnameBox_GotFocus" LostFocus="SurnameBox_LostFocus"></TextBox>
-            <Button Style="{ThemeResource ResourceKey=ButtonStyle}" Content="Add member" x:Name="AddButton" Margin="10,10,10,10" Click="AddButton_Click"/>
+            <TextBox Style="{ThemeResource ResourceKey=TextBoxStyle}" x:Name="SearchBox" VerticalContentAlignment="Center" Text="{StaticResource Search by surname}" Margin="10,10,10,10" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus" TextChanged="SearchBox_TextChanged"/>
+            <TextBox Style="{ThemeResource ResourceKey=TextBoxStyle}" x:Name="NameBox" VerticalContentAlignment="Center" Text="{StaticResource Enter personal name}" Margin="350,10,10,10" LostFocus="NameBox_LostFocus" GotFocus="NameBox_GotFocus"></TextBox>
+            <TextBox Style="{ThemeResource ResourceKey=TextBoxStyle}" x:Name="SurnameBox" VerticalContentAlignment="Center" Text="{StaticResource Enter surname}" Margin="10,10,10,10" GotFocus="SurnameBox_GotFocus" LostFocus="SurnameBox_LostFocus"></TextBox>
+            <Button Style="{ThemeResource ResourceKey=ButtonStyle}" Content="{StaticResource Add member}" x:Name="AddButton" Margin="10,10,10,10" Click="AddButton_Click"/>
         </StackPanel>
         <Grid Grid.Row="1" Grid.Column="0">
             <Grid.RowDefinitions>
@@ -32,10 +32,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Margin="50,0,0,0" Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
-                <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Id"/>
-                <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Name"/>
-                <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Surname"/>
-                <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="Present today"/>
+                <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{StaticResource Id}"/>
+                <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{StaticResource Personal name}"/>
+                <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{StaticResource Surname}"/>
+                <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{StaticResource Present today}"/>
             </StackPanel>
             <ListView Grid.Row="1" Grid.Column="0" x:Name="MemberList">
                 <ListView.ItemTemplate>
@@ -46,7 +46,7 @@
                             <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Name}"/>
                             <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding Surname}"/>
                             <CheckBox Style="{ThemeResource ResourceKey=CheckBoxStyle}" Margin="15,0,0,0" x:Name="TrainingCheckBox" Width="150" VerticalAlignment="Center" IsChecked="{Binding trainedToday}" Click="CheckBox_Click"/>
-                            <Button Style="{ThemeResource ResourceKey=ButtonStyle}" x:Name="DetailsButton" Content="Details" Click="DetailsButton_Click"/>
+                            <Button Style="{ThemeResource ResourceKey=ButtonStyle}" x:Name="DetailsButton" Content="{StaticResource Details}" Click="DetailsButton_Click"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

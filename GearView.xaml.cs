@@ -2,18 +2,9 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 using Windows.UI.Popups;
 
 namespace ClimbingClub
@@ -40,9 +31,9 @@ namespace ClimbingClub
         }
         private void AddGearButton_Click(object sender, RoutedEventArgs e)
         {
-            if(NameBox.Text.Length<1 || DescrBox.Text.Length<1 || NameBox.Text.Equals("Enter name") || DescrBox.Text.Equals("Enter description"))
+            if(NameBox.Text.Length<1 || DescrBox.Text.Length<1 || NameBox.Text.Equals((Application.Current.Resources["Enter name"] as string)) || DescrBox.Text.Equals((Application.Current.Resources["Enter description"] as string)))
             {
-                MessageDialog messageDialog = new MessageDialog("Please set all fields and try again.", "Error");
+                MessageDialog messageDialog = new MessageDialog((Application.Current.Resources["Please set all fields and try again."] as string), (Application.Current.Resources["Error"] as string));
                 messageDialog.ShowAsync();
                 return;
             }
@@ -56,7 +47,7 @@ namespace ClimbingClub
                 }
             }catch(Exception ex)
             {
-                MessageDialog messageDialog = new MessageDialog("Please set a positive number in number field.", "Error");
+                MessageDialog messageDialog = new MessageDialog((Application.Current.Resources["Please set a positive number in number field."] as string), (Application.Current.Resources["Error"] as string));
                 messageDialog.ShowAsync();
                 return;
             }
@@ -75,8 +66,8 @@ namespace ClimbingClub
                     trx.Commit();
                 }
             }
-            NameBox.Text = "Enter name";
-            DescrBox.Text = "Enter description";
+            NameBox.Text = (Application.Current.Resources["Enter name"] as string);
+            DescrBox.Text = (Application.Current.Resources["Enter description"] as string);
             FillGearList();
         }
 
@@ -100,7 +91,7 @@ namespace ClimbingClub
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-            if (SearchBox.Text.Equals("Search by name"))
+            if (SearchBox.Text.Equals((Application.Current.Resources["Search by name"] as string)))
             {
                 return;
             }
@@ -123,13 +114,13 @@ namespace ClimbingClub
         {
             if (SearchBox.Text.Length < 1)
             {
-                SearchBox.Text = "Search by name";
+                SearchBox.Text = (Application.Current.Resources["Search by name"] as string);
             }
         }
 
         private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (SearchBox.Text.Equals("Search by name"))
+            if (SearchBox.Text.Equals((Application.Current.Resources["Search by name"] as string)))
             {
                 SearchBox.Text = "";
             }
@@ -139,13 +130,13 @@ namespace ClimbingClub
         {
             if (NameBox.Text.Length < 1)
             {
-                NameBox.Text = "Enter name";
+                NameBox.Text = (Application.Current.Resources["Enter name"] as string);
             }
         }
 
         private void NameBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (NameBox.Text.Equals("Enter name"))
+            if (NameBox.Text.Equals((Application.Current.Resources["Enter name"] as string)))
             {
                 NameBox.Text = "";
             }
@@ -153,7 +144,7 @@ namespace ClimbingClub
 
         private void DescrBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (DescrBox.Text.Equals("Enter description"))
+            if (DescrBox.Text.Equals((Application.Current.Resources["Enter description"] as string)))
             {
                 DescrBox.Text = "";
             }
@@ -163,7 +154,7 @@ namespace ClimbingClub
         {
             if (DescrBox.Text.Length < 1)
             {
-                DescrBox.Text = "Enter description";
+                DescrBox.Text = (Application.Current.Resources["Enter description"] as string);
             }
         }
 
@@ -171,13 +162,13 @@ namespace ClimbingClub
         {
             if (CountBox.Text.Length < 1)
             {
-                CountBox.Text = "Enter number of gear items";
+                CountBox.Text = (Application.Current.Resources["Enter number of gear items"] as string);
             }
         }
 
         private void CountBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (CountBox.Text.Equals("Enter number of gear items"))
+            if (CountBox.Text.Equals((Application.Current.Resources["Enter number of gear items"] as string)))
             {
                 CountBox.Text = "";
             }
@@ -188,7 +179,7 @@ namespace ClimbingClub
             StackPanel realSender = (StackPanel)((Button)sender).Parent;
             int id = Int32.Parse(((TextBlock)realSender.Children[0]).Text);
             int sum = 0;
-            string result = "Items loaned to:";
+            string result = (Application.Current.Resources["Items loaned to:"] as string);
 
             using (var db = new ApplicationDbContext())
             {
@@ -200,7 +191,7 @@ namespace ClimbingClub
                 }
             }
             TextBlock sumLoanedBlock = new TextBlock() {
-                Text = "Items available: " + (Int32.Parse(((TextBlock)realSender.Children[3]).Text) - sum)+Environment.NewLine
+                Text = (Application.Current.Resources["Items available"] as string) + (Int32.Parse(((TextBlock)realSender.Children[3]).Text) - sum)+Environment.NewLine
             };
             TextBlock membersBlock = new TextBlock()
             {
@@ -215,9 +206,9 @@ namespace ClimbingClub
 
             ContentDialog descrDialog = new ContentDialog()
             {
-                Title = "Loan status",
+                Title = Application.Current.Resources["Loan status"],
                 Content = content,
-                PrimaryButtonText = "Confirm"
+                PrimaryButtonText = Application.Current.Resources["Confirm"] as string
             };
 
             descrDialog.ShowAsync();

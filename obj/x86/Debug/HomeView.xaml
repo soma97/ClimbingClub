@@ -19,12 +19,12 @@
             <StackPanel.Background>
                 <ImageBrush ImageSource="/Assets/sport-muscles-climbing-climber-9606.jpg" Opacity="0.3"/>
             </StackPanel.Background>
-            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Text="Enter username" Margin="50,10,0,0"></TextBlock>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Text="{StaticResource Enter username}" Margin="50,10,0,0"></TextBlock>
             <TextBox x:ConnectionId='2' Style="{ThemeResource ResourceKey=TextBoxStyle}" x:Name="UsernameBox" HorizontalAlignment="Left" Width="150" Margin="50,10,0,0"></TextBox>
-            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Text="Enter password" Margin="50,10,0,0"></TextBlock>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Text="{StaticResource Enter password}" Margin="50,10,0,0"></TextBlock>
             <PasswordBox x:ConnectionId='3' x:Name="PasswordBox" HorizontalAlignment="Left" Width="150" Margin="50,10,0,0"></PasswordBox>
-            <Button x:ConnectionId='4' Style="{ThemeResource ResourceKey=ButtonStyle}" x:Name="LoginButton" Content="Login" Width="150" HorizontalAlignment="Left" Margin="50,10,0,0"                          />
-            <Button x:ConnectionId='5' Style="{ThemeResource ResourceKey=ButtonStyle}" x:Name="AddUserButton" Visibility="Collapsed" Content="Add user" Width="150" HorizontalAlignment="Left" Margin="50,100,0,0"                            />
+            <Button x:ConnectionId='4' Style="{ThemeResource ResourceKey=ButtonStyle}" x:Name="LoginButton" Content="{StaticResource Login}" Width="150" HorizontalAlignment="Left" Margin="50,10,0,0"                          />
+            <Button x:ConnectionId='5' Style="{ThemeResource ResourceKey=ButtonStyle}" x:Name="AddUserButton" Visibility="Collapsed" Content="{StaticResource Add user}" Width="150" HorizontalAlignment="Left" Margin="50,100,0,0"                            />
         </StackPanel>
 
     </Grid>

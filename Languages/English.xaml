@@ -1,0 +1,109 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClimbingClub.Languages">
+
+    <x:String x:Key="Personal name">Name</x:String>
+    <x:String x:Key="Enter personal name">Enter name</x:String>
+    <x:String x:Key="Available">Available</x:String>
+    <x:String x:Key="Loaned">Loaned</x:String>
+    <x:String x:Key="overdue">overdue</x:String>
+    <x:String x:Key="Monthly fee">Monthly fee</x:String>
+    <x:String x:Key="One training fee">One training fee</x:String>
+   
+    <!-- GearView-->
+    <x:String x:Key="Search by name">Search by name</x:String>
+    <x:String x:Key="Enter name">Enter name</x:String>
+    <x:String x:Key="Enter description">Enter description</x:String>
+    <x:String x:Key="Enter number of gear items">Enter number of gear items</x:String>
+    <x:String x:Key="Add gear item">Add gear item</x:String>
+    <x:String x:Key="Id">Id</x:String>
+    <x:String x:Key="Name">Name</x:String>
+    <x:String x:Key="Surname">Surname</x:String>
+    <x:String x:Key="Description">Description</x:String>
+    <x:String x:Key="Total Count">Total Count</x:String>
+    <x:String x:Key="Loan status">Loan status</x:String>
+    <x:String x:Key="Delete">Delete</x:String>
+    <x:String x:Key="Confirm">Confirm</x:String>
+    <x:String x:Key="Items available">Items available: </x:String>
+    <x:String x:Key="Items loaned to:">Items loaned to:</x:String>
+
+    <x:String x:Key="Error">Error</x:String>
+    <x:String x:Key="Please set all fields and try again.">Please set all fields and try again.</x:String>
+    <x:String x:Key="Please set a positive number in number field.">Please set a positive number in number field.</x:String>
+    
+    
+    <!-- HomeView-->
+    <x:String x:Key="Enter username">Enter username</x:String>
+    <x:String x:Key="Enter password">Enter password</x:String>
+    <x:String x:Key="Login">Login</x:String>
+    <x:String x:Key="Add user">Add user</x:String>
+    <x:String x:Key="Invalid username or password.">Invalid username or password.</x:String>
+    <x:String x:Key="Admin">Admin</x:String>
+    <x:String x:Key="Cancel">Cancel</x:String>
+    <x:String x:Key="Username already exists.">Username already exists.</x:String>
+    
+    <!-- LoaningsView-->
+    <x:String x:Key="Search by loaner surname">Search by loaner surname</x:String>
+    <x:String x:Key="User">User</x:String>
+    <x:String x:Key="Loan date">Loan date</x:String>
+    <x:String x:Key="Expected return date">Expected return date</x:String>
+    <x:String x:Key="Return date">Return date</x:String>
+    <x:String x:Key="Loaner name">Loaner name</x:String>
+    <x:String x:Key="Loaner surname">Loaner surname</x:String>
+    <x:String x:Key="Return">Return</x:String>
+    <x:String x:Key="Count">Count</x:String>
+    <x:String x:Key="Items">Items</x:String>
+    <x:String x:Key="Loaning description">Loaning description</x:String>
+    
+    <!-- MainPage-->
+    <x:String x:Key="Home">Home</x:String>
+    <x:String x:Key="Members">Members</x:String>
+    <x:String x:Key="Loanings">Loanings</x:String>
+    <x:String x:Key="Gear">Gear</x:String>
+    <x:String x:Key="Change language">Change language</x:String>
+    <x:String x:Key="Change theme">Change theme</x:String>
+    <x:String x:Key="Dark theme">Dark theme</x:String>
+    <x:String x:Key="Light theme">Light theme</x:String>
+    <x:String x:Key="Blue theme">Blue theme</x:String>
+    <x:String x:Key="Change fees">Change fees</x:String>
+    <x:String x:Key="Logout">Log out</x:String>
+    <x:String x:Key="You need admin privileges to change fees.">You need admin privileges to change fees.</x:String>
+    <x:String x:Key="Enter monthly fee">Enter monthly fee</x:String>
+    <x:String x:Key="You must login first.">You must login first.</x:String>
+    <x:String x:Key="Enter one training fee">Enter one training fee</x:String>
+    <x:String x:Key="Value not set. Please enter a number.">Value not set. Please enter a number.</x:String>
+    <x:String x:Key="Notification">Notification</x:String>
+    <x:String x:Key="Please restart app to make changes.">Please restart app to make changes.</x:String>
+
+    <!-- MemberInfoView-->
+    <x:String x:Key="Training days">Training days</x:String>
+    <x:String x:Key="Date">Date</x:String>
+    <x:String x:Key="Price (KM)">Price (KM)</x:String>
+    <x:String x:Key="Payment Type">Payment Type</x:String>
+    <x:String x:Key="Unpaid trainings">Unpaid trainings</x:String>
+    <x:String x:Key="Add payment">Add payment</x:String>
+    <x:String x:Key="Add loaning">Add loaning</x:String>
+    <x:String x:Key="Edit member">Edit member</x:String>
+    <x:String x:Key="Delete member">Delete member</x:String>
+    <x:String x:Key="Member owns">Member owns</x:String>
+    <x:String x:Key="Select payment type">Select payment type</x:String>
+    <x:String x:Key="Select date">Select date</x:String>
+    <x:String x:Key="You already paid that.">You already paid that.</x:String>
+    <x:String x:Key="Something went wrong. Please try again.">Something went wrong. Please try again.</x:String>
+    <x:String x:Key="Select items for loaning">Select items for loaning</x:String>
+    <x:String x:Key="Return date can't be set to date which is before today's date. Please try again.">Return date can't be set to date which is before today's date. Please try again.</x:String>
+    <x:String x:Key="Please set loaning name and try again.">Please set loaning name and try again.</x:String>
+    <x:String x:Key="Change member">Change member</x:String>
+    <x:String x:Key="Delete member permanently?">Delete member permanently?</x:String>
+    <x:String x:Key="If you delete this member, you won't be able to recover it. Do you want to delete it?">If you delete this member, you won't be able to recover it. Do you want to delete it?</x:String>
+
+    <!-- MembersView-->
+    <x:String x:Key="Search by surname">Search by surname</x:String>
+    <x:String x:Key="Enter surname">Enter surname</x:String>
+    <x:String x:Key="Add member">Add member</x:String>
+    <x:String x:Key="Present today">Present today</x:String>
+    <x:String x:Key="Details">Details</x:String>
+    <x:String x:Key="Invalid member data.">Invalid member data.</x:String>
+
+</ResourceDictionary>
