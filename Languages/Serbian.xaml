@@ -97,7 +97,8 @@
     <x:String x:Key="Change member">Izmjeni clana</x:String>
     <x:String x:Key="Delete member permanently?">Izbrisi clana?</x:String>
     <x:String x:Key="If you delete this member, you won't be able to recover it. Do you want to delete it?">Ako izbrisete clana necete ga moci vratiti. Da li ste sigurni?</x:String>
-
+    <x:String x:Key="Please set at least one loaning item and try again.">Oznacite barem jednu stavku za posudbu.</x:String>
+    
     <!-- MembersView-->
     <x:String x:Key="Search by surname">Pretrazi po prezimenu</x:String>
     <x:String x:Key="Enter surname">Unesite ime</x:String>

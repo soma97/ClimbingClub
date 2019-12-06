@@ -191,7 +191,7 @@ namespace ClimbingClub
                 }
             }
             TextBlock sumLoanedBlock = new TextBlock() {
-                Text = (Application.Current.Resources["Items available"] as string) + (Int32.Parse(((TextBlock)realSender.Children[3]).Text) - sum)+Environment.NewLine
+                Text = (Application.Current.Resources["Items available"] as string) + " " + (Int32.Parse(((TextBlock)realSender.Children[3]).Text) - sum)+Environment.NewLine
             };
             TextBlock membersBlock = new TextBlock()
             {

@@ -335,6 +335,8 @@ namespace ClimbingClub
                     if (count==0)
                     {
                         db.Loanings.Remove(loan);
+                        MessageDialog messageDialog = new MessageDialog((Application.Current.Resources["Please set at least one loaning item and try again."] as string), (Application.Current.Resources["Error"] as string));
+                        messageDialog.ShowAsync();
                     }
                     else
                     {

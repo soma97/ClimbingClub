@@ -97,7 +97,8 @@
     <x:String x:Key="Change member">Change member</x:String>
     <x:String x:Key="Delete member permanently?">Delete member permanently?</x:String>
     <x:String x:Key="If you delete this member, you won't be able to recover it. Do you want to delete it?">If you delete this member, you won't be able to recover it. Do you want to delete it?</x:String>
-
+    <x:String x:Key="Please set at least one loaning item and try again.">Please set at least one loaning item and try again.</x:String>
+    
     <!-- MembersView-->
     <x:String x:Key="Search by surname">Search by surname</x:String>
     <x:String x:Key="Enter surname">Enter surname</x:String>

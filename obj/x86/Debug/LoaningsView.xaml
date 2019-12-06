@@ -28,7 +28,7 @@
             <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{StaticResource User}"/>
             <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="70" VerticalAlignment="Center" Text="{StaticResource Loan date}"/>
             <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="130" VerticalAlignment="Center" Text="{StaticResource Expected return date}"/>
-            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="110" VerticalAlignment="Center" Text="{StaticResource Return date}"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="115" VerticalAlignment="Center" Text="{StaticResource Return date}"/>
             <TextBlock Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{StaticResource Loaner name}"/>
             <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="120" VerticalAlignment="Center" Text="{StaticResource Loaner surname}"/>
         </StackPanel>
@@ -41,7 +41,7 @@
                         <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding user.Username}"/>
                         <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="70" VerticalAlignment="Center" Text="{Binding loanDateGet}"/>
                         <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="130" VerticalAlignment="Center" Text="{Binding expectedReturnDateGet}"/>
-                        <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="110" VerticalAlignment="Center" Text="{Binding returnDateGet}"/>
+                        <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="115" VerticalAlignment="Center" Text="{Binding returnDateGet}"/>
                         <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding Member.Name}"/>
                         <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="120" VerticalAlignment="Center" Text="{Binding Member.Surname}"/>
                         <Button x:ConnectionId='4' Style="{ThemeResource ResourceKey=ButtonStyle}" x:Name="DescriptionButton" Margin="20,0,0,0" Content="{StaticResource Description}"                                />

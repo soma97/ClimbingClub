@@ -31,7 +31,7 @@
         <StackPanel Margin="50,0,0,0" VerticalAlignment="Bottom" Orientation="Horizontal" Grid.Row="0" Grid.Column="2" Height="20">
             <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{StaticResource Date}"/>
             <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{StaticResource Price (KM)}"/>
-            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="135" VerticalAlignment="Center" Text="{StaticResource Payment Type}"/>
+            <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{StaticResource Payment Type}"/>
         </StackPanel>
         <ListView Grid.Row="1" Grid.Column="2" x:Name="PaymentList" Style="{ThemeResource ResourceKey=ListViewStyle}" >
             <ListView.ItemTemplate>
@@ -40,7 +40,7 @@
                         <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Visibility="Collapsed" Text="{Binding Id}"/>
                         <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="55,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding timeFormat}"/>
                         <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding Price}"/>
-                        <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="100" VerticalAlignment="Center" Text="{Binding isMonthlyFormat}"/>
+                        <TextBlock Style="{ThemeResource ResourceKey=TextBlockStyle}" Margin="15,0,0,0" Width="150" VerticalAlignment="Center" Text="{Binding isMonthlyFormat}"/>
                         <Button Style="{ThemeResource ResourceKey=ButtonStyle}" Margin="15,0,0,0" x:Name="DeletePayment" Content="{StaticResource Delete}" Click="DeletePayment_Click"/>
                     </StackPanel>
                 </DataTemplate>
